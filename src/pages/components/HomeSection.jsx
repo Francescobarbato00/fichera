@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link"; // Importa Link da next/link
 
 const HomeSection = () => {
   return (
@@ -22,9 +23,11 @@ const HomeSection = () => {
           un'esperienza unica che unisce tradizione e modernità.
         </p>
         <div className="mt-6 flex justify-start w-full">
-          <button className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300">
-            Prenota Ora
-          </button>
+          <Link href="/Appointment">
+            <button className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300">
+              Prenota Ora
+            </button>
+          </Link>
         </div>
       </div>
     </div>
