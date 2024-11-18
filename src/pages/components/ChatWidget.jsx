@@ -43,46 +43,59 @@ const ChatWidget = () => {
 
       {/* Finestra Chat */}
       {isOpen && (
-        <div className="bg-white rounded-lg shadow-lg w-80">
+        <div
+          className="bg-white rounded-lg shadow-2xl w-96 h-96 flex flex-col"
+          style={{ maxWidth: "90%", maxHeight: "85vh" }}
+        >
           {/* Header della Chat */}
-          <div className="bg-black text-white font-bold text-lg px-4 py-2 flex justify-between items-center rounded-t-lg">
+          <div className="bg-black text-white font-bold text-lg px-4 py-3 flex justify-between items-center rounded-t-lg">
             <span>DF BARBER SHOP ASSISTANT</span>
-            <button onClick={handleToggleChat} className="text-white">
+            <button onClick={handleToggleChat} className="text-white hover:text-gray-300">
               ✕
             </button>
           </div>
 
           {/* Messaggi */}
-          <div className="flex flex-col space-y-2 overflow-y-auto max-h-60 p-4">
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
-              >
+          <div className="flex-grow overflow-y-auto p-4 space-y-4 bg-gray-100">
+            {messages.length === 0 ? (
+              <div className="text-gray-500 text-center mt-10">
+                <p>Inizia una conversazione!</p>
+              </div>
+            ) : (
+              messages.map((msg, index) => (
                 <div
-                  className={`px-4 py-2 rounded-lg ${
-                    msg.sender === "user" ? "bg-blue-500 text-white" : "bg-gray-200 text-black"
+                  key={index}
+                  className={`flex ${
+                    msg.sender === "user" ? "justify-end" : "justify-start"
                   }`}
                 >
-                  <p className="text-sm">{msg.text}</p>
-                  <p className="text-xs mt-1 text-right">{msg.timestamp}</p>
+                  <div
+                    className={`px-4 py-3 rounded-2xl max-w-xs ${
+                      msg.sender === "user"
+                        ? "bg-blue-500 text-white"
+                        : "bg-gray-200 text-black"
+                    }`}
+                  >
+                    <p className="text-sm">{msg.text}</p>
+                    <p className="text-xs mt-1 text-right">{msg.timestamp}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
 
           {/* Input della Chat */}
-          <div className="flex items-center p-4 border-t">
+          <div className="border-t p-3 bg-white flex items-center">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-grow border rounded-l-lg px-4 py-2"
+              className="flex-grow border border-gray-300 rounded-l-full px-4 py-2 focus:ring-2 focus:ring-blue-500"
               placeholder="Scrivi un messaggio..."
             />
             <button
               onClick={handleSendMessage}
-              className="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600"
+              className="bg-blue-500 text-white px-6 py-2 rounded-r-full hover:bg-blue-600 transition-all"
             >
               Invia
             </button>
