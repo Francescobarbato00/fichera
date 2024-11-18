@@ -37,9 +37,11 @@ const BestSellers = () => {
   return (
     <div className="py-16 bg-white">
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-semibold">I NOSTRI PRODOTTI</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold text-black">
+          I NOSTRI PRODOTTI
+        </h2>
       </div>
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-8 px-4">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 px-4">
         {products.map((product) => (
           <div
             key={product.id}
@@ -49,11 +51,13 @@ const BestSellers = () => {
               <img
                 src={product.image}
                 alt={product.title}
-                className="w-full h-64 object-contain mb-4 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
+                className="w-full h-48 sm:h-64 object-contain mb-4 transition-transform duration-300 ease-in-out transform group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-0 transition duration-300 ease-in-out"></div>
             </div>
-            <h3 className="text-lg font-medium text-gray-800">{product.title}</h3>
+            <h3 className="text-base sm:text-lg font-medium text-gray-800">
+              {product.title}
+            </h3>
             <p className="text-sm text-gray-600 mt-2">{product.price}</p>
           </div>
         ))}
