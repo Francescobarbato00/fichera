@@ -25,7 +25,7 @@ export default function Appointment() {
       <BookingFormSection />
 
       {/* Divisore */}
-      <div className="border-t mx-auto w-3/4 my-6 bg-gray-300 sm:bg-white"></div>
+      <div className="border-t mx-auto w-3/4 my-6 bg-white"></div>
 
       {/* Other Booking Methods Section */}
       <OtherBookingMethods />
