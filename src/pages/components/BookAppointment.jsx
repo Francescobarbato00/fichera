@@ -3,7 +3,7 @@ import React from "react";
 const BookAppointment = () => {
   return (
     <div className="py-12 sm:py-16 bg-white text-center">
-      <h2 className="text-xl sm:text-2xl font-medium mb-4">
+      <h2 className="text-xl sm:text-2xl font-medium mb-4 text-black sm:text-current">
         PRENOTA UN APPUNTAMENTO
       </h2>
       <p className="text-sm sm:text-md text-gray-700 mb-6 sm:mb-8 max-w-xs sm:max-w-3xl mx-auto leading-relaxed">

@@ -21,7 +21,7 @@ const HomeSection = () => {
           La rivoluzione dello stile: precisione, cura dei dettagli e
           un'esperienza unica che unisce tradizione e modernità.
         </p>
-        <div className="mt-6 flex justify-center sm:justify-start w-full">
+        <div className="mt-6 flex justify-start w-full">
           <button className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300">
             Prenota Ora
           </button>
