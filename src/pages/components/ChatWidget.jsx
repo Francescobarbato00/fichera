@@ -72,7 +72,7 @@ const ChatWidget = () => {
                   <div
                     className={`px-4 py-3 rounded-2xl max-w-xs ${
                       msg.sender === "user"
-                        ? "bg-blue-500 text-white"
+                        ? "bg-yellow-500 text-black"
                         : "bg-gray-200 text-black"
                     }`}
                   >
@@ -90,12 +90,12 @@ const ChatWidget = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              className="flex-grow border border-gray-300 rounded-l-full px-4 py-2 focus:ring-2 focus:ring-blue-500"
+              className="flex-grow border border-gray-300 rounded-l-full px-4 py-2 focus:ring-2 focus:ring-yellow-500"
               placeholder="Scrivi un messaggio..."
             />
             <button
               onClick={handleSendMessage}
-              className="bg-blue-500 text-white px-6 py-2 rounded-r-full hover:bg-blue-600 transition-all"
+              className="bg-yellow-500 text-black px-6 py-2 rounded-r-full hover:bg-yellow-600 transition-all"
             >
               Invia
             </button>
