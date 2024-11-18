@@ -39,25 +39,34 @@ const TestimonialsSection = () => {
 
   return (
     <div className="bg-white py-16">
-      <div className="max-w-6xl mx-auto text-center px-6">
+      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
         {/* Titolo */}
-        <h2 className="text-3xl font-bold mb-10">DICONO DI NOI</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-black">
+          DICONO DI NOI
+        </h2>
 
         {/* Contenuto delle recensioni */}
-        <div className="flex justify-center space-x-10">
-          <div className="relative text-6xl text-gray-300 leading-none">
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-10">
+          {/* Apertura di virgolette */}
+          <div className="relative text-4xl sm:text-6xl text-gray-300 leading-none mb-4 sm:mb-0">
             &#8220; {/* Grande apertura di virgolette */}
           </div>
-          <div>
-            <p className="text-lg italic text-gray-700">
+
+          {/* Testo della recensione */}
+          <div className="text-center sm:text-left">
+            <p className="text-base sm:text-lg italic text-gray-700">
               {reviews[currentIndex].text}
             </p>
             <div className="mt-6">
-              <h4 className="text-lg font-bold">{reviews[currentIndex].name}</h4>
+              <h4 className="text-base sm:text-lg font-bold text-black">
+                {reviews[currentIndex].name}
+              </h4>
               <p className="text-sm text-gray-500">{reviews[currentIndex].role}</p>
             </div>
           </div>
-          <div className="relative text-6xl text-gray-300 leading-none">
+
+          {/* Chiusura di virgolette */}
+          <div className="relative text-4xl sm:text-6xl text-gray-300 leading-none mt-4 sm:mt-0">
             &#8221; {/* Grande chiusura di virgolette */}
           </div>
         </div>
