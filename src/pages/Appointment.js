@@ -21,8 +21,6 @@ export default function Appointment() {
       {/* Appointment Header Section */}
       <AppointmentHeader />
 
-      {/* Divisore */}
-      <div className="border-t border-gray-300 mx-auto w-3/4 my-6"></div>
 
       {/* Booking Form Section */}
       <BookingFormSection />

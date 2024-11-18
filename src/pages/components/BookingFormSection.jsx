@@ -14,9 +14,9 @@ const BookingFormSection = () => {
   return (
     <div className="py-12 bg-white">
       <div className="container mx-auto px-4">
-        <form className="bg-white p-8 rounded-lg shadow-lg space-y-6 max-w-5xl mx-auto">
+        <form className="bg-white p-6 sm:p-8 rounded-lg shadow-lg space-y-6 max-w-lg sm:max-w-5xl mx-auto">
           {/* Nome e Telefono */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
               <label className="block text-gray-600 mb-2" htmlFor="name">
                 Nome *
@@ -25,7 +25,7 @@ const BookingFormSection = () => {
                 type="text"
                 id="name"
                 placeholder="Il tuo nome"
-                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 border border-gray-300 text-black placeholder-gray-600 rounded focus:ring-2 focus:ring-yellow-500"
                 required
               />
             </div>
@@ -37,14 +37,14 @@ const BookingFormSection = () => {
                 type="tel"
                 id="phone"
                 placeholder="Il tuo numero"
-                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 border border-gray-300 text-black placeholder-gray-600 rounded focus:ring-2 focus:ring-yellow-500"
                 required
               />
             </div>
           </div>
 
           {/* Email e Data */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
               <label className="block text-gray-600 mb-2" htmlFor="email">
                 Email *
@@ -53,7 +53,7 @@ const BookingFormSection = () => {
                 type="email"
                 id="email"
                 placeholder="Email"
-                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 border border-gray-300 text-black placeholder-gray-600 rounded focus:ring-2 focus:ring-yellow-500"
                 required
               />
             </div>
@@ -61,17 +61,17 @@ const BookingFormSection = () => {
               <label className="block text-gray-600 mb-2" htmlFor="datetime">
                 Data e Ora *
               </label>
-              <div className="flex space-x-4">
+              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
                 <input
                   type="date"
                   id="date"
-                  className="w-1/2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                  className="w-full sm:w-1/2 p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
                   required
                 />
                 <input
                   type="time"
                   id="time"
-                  className="w-1/2 p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                  className="w-full sm:w-1/2 p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
                   required
                 />
               </div>
@@ -79,14 +79,14 @@ const BookingFormSection = () => {
           </div>
 
           {/* Servizio e Barbiere */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
               <label className="block text-gray-600 mb-2" htmlFor="service">
                 Servizio *
               </label>
               <select
                 id="service"
-                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
                 onChange={handleServiceChange}
                 required
               >
@@ -108,7 +108,7 @@ const BookingFormSection = () => {
                     type="text"
                     id="other-service"
                     placeholder="Descrivi il servizio desiderato"
-                    className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                    className="w-full p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
                   />
                 </div>
               )}
@@ -120,7 +120,7 @@ const BookingFormSection = () => {
               </label>
               <select
                 id="barber"
-                className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+                className="w-full p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
                 required
               >
                 <option value="">Seleziona</option>
@@ -140,7 +140,7 @@ const BookingFormSection = () => {
               id="message"
               rows="4"
               placeholder="Richieste o informazioni aggiuntive"
-              className="w-full p-3 border border-gray-300 rounded focus:ring-2 focus:ring-yellow-500"
+              className="w-full p-3 border border-gray-300 text-black rounded focus:ring-2 focus:ring-yellow-500"
             ></textarea>
           </div>
 
