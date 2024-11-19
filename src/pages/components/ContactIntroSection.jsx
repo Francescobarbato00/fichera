@@ -3,12 +3,16 @@ import React from "react";
 const ContactIntroSection = () => {
   return (
     <div
-      className="relative h-screen bg-cover bg-center flex items-center justify-center text-center text-white"
+      className="relative h-screen flex items-center justify-center text-center text-white"
       style={{
-        backgroundImage: "url('/background.jpg')", // Sostituisci con il percorso della tua immagine di sfondo
+        backgroundImage: "url('/contatti.jpeg')", // Sostituisci con il percorso della tua immagine di sfondo
+        backgroundSize: "cover", // Assicura che l'immagine riempia interamente il contenitore
+        backgroundPosition: "center center", // Centra l'immagine sia orizzontalmente che verticalmente
+        backgroundRepeat: "no-repeat", // Evita ripetizioni
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-70"></div> {/* Overlay scuro */}
+      {/* Overlay scuro per migliorare il contrasto */}
+      <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative z-10 px-6">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">Contattaci</h1>
         <p className="text-lg md:text-xl max-w-3xl mx-auto">

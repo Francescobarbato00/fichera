@@ -6,11 +6,11 @@ const FounderSection = () => {
       {/* Immagine a sinistra */}
       <div className="lg:w-1/2 mb-8 lg:mb-0 flex justify-center">
         <img
-          src="/barber-shop.jpg" // Sostituisci con il percorso della tua immagine
+          src="/taglio.jpeg" // Sostituisci con il percorso della tua immagine
           alt="Barbershop"
           style={{
-            width: "540px", // Larghezza esplicita dell'immagine
-            height: "630px", // Altezza automatica per mantenere le proporzioni
+            width: "400px", // Larghezza esplicita dell'immagine
+            height: "600px", // Altezza automatica per mantenere le proporzioni
           }}
           className="shadow-md"
         />
@@ -27,7 +27,7 @@ const FounderSection = () => {
           "Ogni cliente merita un servizio impeccabile e una cura personalizzata. La nostra missione è offrirti
           il meglio per il tuo stile e la tua immagine."
         </p>
-        <p className="text-gray-800 italic font-medium">- Luca Rossi, Fondatore</p>
+        <p className="text-gray-800 italic font-medium">- Daniele Fichera, Fondatore</p>
 
         {/* Progress Bars */}
         <div className="mt-8 space-y-6">

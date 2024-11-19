@@ -3,27 +3,33 @@ import React, { useState, useEffect } from "react";
 const reviews = [
   {
     id: 1,
-    name: "Mario Rossi",
-    text: "Un taglio perfetto! Il barbiere è stato molto attento e professionale.",
-    role: "Cliente",
+    name: "R. Capasso",
+    text: "Personale molto alla mano e disponibile, subito si sono mostrati accoglienti e competenti, pronti a fornire un ottimo servizio per taglio sia di capelli e che di barba. Ci tornerò.",
   },
   {
     id: 2,
-    name: "Luigi Bianchi",
-    text: "Ambiente pulito e accogliente. Servizio eccellente e puntuale.",
-    role: "Cliente",
+    name: "Susan Conway",
+    text: "Ci sono andato 3 settimane fa e mi hanno fatto un taglio veramente perfetto e persone veramente educate e rispettose.",
   },
   {
     id: 3,
-    name: "Carlo Verdi",
-    text: "Il miglior barbershop della città! Competenza e gentilezza garantite.",
-    role: "Cliente abituale",
+    name: "Valpaogiu Porlai",
+    text: "Daniele e il Maestro sono sempre cordiali e disponibili nonché molto bravi nel loro lavoro. Ora anche supportati da diversi aiuti. Trattamento barba e capelli rilassante con panno caldo / freddo e massaggio. Un’ora di relax sempre gradita. Bravi.",
   },
   {
     id: 4,
-    name: "Francesca Neri",
-    text: "Taglio capelli fantastico e un ottimo consiglio per la barba. Tornerò sicuramente!",
-    role: "Cliente nuova",
+    name: "Fabio Pascarella",
+    text: "Con la prenotazione zero attesa. Daniele top! Tornerò sicuramente.",
+  },
+  {
+    id: 5,
+    name: "Valentina Visconti",
+    text: "Ottimo rapporto qualità prezzo. Daniele ed il suo staff sono bravissimi, cordiali e disponibili. Il locale è sempre pulito e ben frequentato. Mio figlio oramai adora Daniele e si fa tagliare i capelli solo da lui. Daniele lavora con il nonno, un bellissimo messaggio familiare.",
+  },
+  {
+    id: 6,
+    name: "Ferruccio Trastullo",
+    text: "Taglio moderno, ambiente stupendo. Personale fantastico. Ogni volta che mi siedo sulla poltrona perdo i sensi... Normalmente barba e capelli. Il balsamo per l'anima è incluso.",
   },
 ];
 
@@ -42,7 +48,7 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
         {/* Titolo */}
         <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-black">
-          DICONO DI NOI
+          DICO DI<span className="text-yellow-500"> NOI</span>
         </h2>
 
         {/* Contenuto delle recensioni */}
@@ -61,7 +67,6 @@ const TestimonialsSection = () => {
               <h4 className="text-base sm:text-lg font-bold text-black">
                 {reviews[currentIndex].name}
               </h4>
-              <p className="text-sm text-gray-500">{reviews[currentIndex].role}</p>
             </div>
           </div>
 

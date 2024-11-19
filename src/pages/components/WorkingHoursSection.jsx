@@ -7,7 +7,7 @@ const WorkingHoursSection = () => {
       <div className="w-full md:w-1/2 h-96 md:h-auto">
         <iframe
           title="Barbershop Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8397594727315!2d-122.41941508468168!3d37.774929779759985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f2343df7%3A0x5e1b8c65d1c6e20e!2sBarbershop!5e0!3m2!1sen!2sus!4v1678739602835!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.9279300472715!2d12.486313515540315!3d41.8205479792288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13258a76207005d9%3A0x3b1234c8903e4230!2sVia%20Alberto%20Moravia%2C%2077%2C%2000143%20Roma%20RM%2C%20Italia!5e0!3m2!1sit!2sit!4v1678739602835!5m2!1sit!2sit"
           width="100%"
           height="100%"
           allowFullScreen
@@ -28,8 +28,7 @@ const WorkingHoursSection = () => {
 
         <table className="w-full text-gray-800">
           <tbody>
-            {[
-              { day: "Lunedì", hours: "09:00 - 19:00" },
+            {[{ day: "Lunedì", hours: "09:00 - 19:00" },
               { day: "Martedì", hours: "09:00 - 19:00" },
               { day: "Mercoledì", hours: "09:00 - 19:00" },
               { day: "Giovedì", hours: "09:00 - 19:00" },

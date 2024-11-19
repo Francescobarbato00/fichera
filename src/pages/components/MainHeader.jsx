@@ -1,5 +1,5 @@
 import React from "react";
-import { FaInstagram, FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa"; // Icone social
+import { FaInstagram, FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa"; // Icone social
 import { MdAccountCircle, MdSearch, MdShoppingCart } from "react-icons/md"; // Icone utente, ricerca e carrello
 
 const MainHeader = () => {
@@ -10,7 +10,7 @@ const MainHeader = () => {
         {/* Icone Social a sinistra */}
         <div className="flex items-center space-x-4">
           <a
-            href="https://www.instagram.com/"
+            href="https://www.instagram.com/dfbarber_shop/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-yellow-500"
@@ -18,7 +18,7 @@ const MainHeader = () => {
             <FaInstagram className="h-6 w-6" />
           </a>
           <a
-            href="https://www.facebook.com/"
+            href="https://www.facebook.com/DFBarberShop/"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-yellow-500"
@@ -26,20 +26,12 @@ const MainHeader = () => {
             <FaFacebook className="h-6 w-6" />
           </a>
           <a
-            href="https://twitter.com/"
+            href="https://www.tiktok.com/@dfbarbershop7"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-yellow-500"
           >
-            <FaTwitter className="h-6 w-6" />
-          </a>
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-yellow-500"
-          >
-            <FaYoutube className="h-6 w-6" />
+            <FaTiktok className="h-6 w-6" />
           </a>
         </div>
 
@@ -56,9 +48,6 @@ const MainHeader = () => {
 
         {/* Icone a destra */}
         <div className="flex items-center space-x-4">
-          <button className="hover:text-yellow-500">
-            <MdAccountCircle className="h-6 w-6" />
-          </button>
           <button className="hover:text-yellow-500">
             <MdSearch className="h-6 w-6" />
           </button>

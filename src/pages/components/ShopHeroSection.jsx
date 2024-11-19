@@ -7,7 +7,7 @@ const ShopHeroSection = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: "url('/barber-working.jpg')", // Sostituisci con il percorso della tua immagine
+          backgroundImage: "url('/shop.jpeg')", // Sostituisci con il percorso della tua immagine
         }}
       ></div>
 

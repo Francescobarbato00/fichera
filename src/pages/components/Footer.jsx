@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -26,19 +26,19 @@ const Footer = () => {
 
         {/* Sezione Social */}
         <div className="text-center">
-          <h3 className="text-sm font-bold uppercase mb-2 tracking-wider">Give us a follow</h3>
+          <h3 className="text-sm font-bold uppercase mb-2 tracking-wider">Seguici su</h3>
           <div className="h-[1px] w-16 bg-white mb-4 mx-auto"></div>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="hover:text-gray-400">
-              <FaFacebook className="h-6 w-6" />
-            </a>
-            <a href="#" className="hover:text-gray-400">
-              <FaTwitter className="h-6 w-6" />
-            </a>
-            <a href="#" className="hover:text-gray-400">
+            <a href="https://www.instagram.com/dfbarber_shop/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
               <FaInstagram className="h-6 w-6" />
             </a>
-            <a href="#" className="hover:text-gray-400">
+            <a href="https://www.facebook.com/DFBarberShop/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
+              <FaFacebook className="h-6 w-6" />
+            </a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
+              <FaTiktok className="h-6 w-6" />
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
               <FaYoutube className="h-6 w-6" />
             </a>
           </div>

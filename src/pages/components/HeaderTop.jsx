@@ -9,7 +9,7 @@ const HeaderTop = () => {
           href="/Appointment"
           className="text-yellow-500 underline hover:text-yellow-300"
         >
-          CLICCARE QUI
+          CHIAMA IL 06 8398 6576
         </a>
       </span>
     </div>

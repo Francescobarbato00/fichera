@@ -46,7 +46,7 @@ const DynamicTextSection = () => {
     <div
       className="relative h-screen bg-cover bg-center text-white flex flex-col items-center justify-center"
       style={{
-        backgroundImage: "url('/background-services.jpg')", // Sostituisci con il percorso della tua immagine
+        backgroundImage: "url('/shop1.jpeg')", // Sostituisci con il percorso della tua immagine
       }}
     >
       {/* Overlay nero con trasparenza */}

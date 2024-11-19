@@ -10,7 +10,7 @@ const ContactSection = () => {
             <span className="text-yellow-500">Siamo</span> qui per aiutarti!
           </h2>
           <p className="text-gray-700 mb-4">
-            Hai domande o dubbi? Vuoi prenotare un appuntamento? Inviaci un
+            Hai domande o dubbi? Inviaci un
             messaggio compilando il modulo qui sotto.
           </p>
           <form className="space-y-3">
@@ -45,9 +45,9 @@ const ContactSection = () => {
               <span className="text-yellow-500">Sede</span>
             </h3>
             <p className="text-gray-700">
-              Via Roma, 123<br />
-              Milano, Lombardia, Italia<br />
-              CAP: 20121
+              Via Alberto Moravia, 77<br />
+              Roma RM, Italia<br />
+              CAP: 00143
             </p>
           </div>
 
@@ -57,17 +57,10 @@ const ContactSection = () => {
             </h3>
             <p className="text-gray-700">
               <a
-                href="mailto:info@barbershop.it"
+                href="mailto:df7barber@gmail.com"
                 className="text-gray-800 hover:underline"
               >
-                info@barbershop.it
-              </a>
-              <br />
-              <a
-                href="mailto:prenotazioni@barbershop.it"
-                className="text-gray-800 hover:underline"
-              >
-                prenotazioni@barbershop.it
+                df7barber@gmail.com
               </a>
             </p>
           </div>
@@ -77,7 +70,7 @@ const ContactSection = () => {
               <span className="text-yellow-500">Telefono</span>
             </h3>
             <p className="text-gray-700">
-              Tel: +39 02 12345678<br />
+              Tel: 06 8398 6576<br />
               Lun - Sab: 09:00 - 19:00
             </p>
           </div>

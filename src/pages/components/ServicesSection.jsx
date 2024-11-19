@@ -7,7 +7,7 @@ const ServicesSection = () => {
         {/* Prima immagine */}
         <div className="text-center border border-white">
           <img
-            src="/1.jpg" // Cambia con l'immagine appropriata
+            src="/taglio5.jpeg" // Cambia con l'immagine appropriata
             alt="Taglio"
             className="w-full h-60 sm:h-80 object-cover"
           />
@@ -17,7 +17,7 @@ const ServicesSection = () => {
         {/* Seconda immagine */}
         <div className="text-center border border-white">
           <img
-            src="/2.jpg" // Cambia con l'immagine appropriata
+            src="/taglio2.jpeg" // Cambia con l'immagine appropriata
             alt="Barba"
             className="w-full h-60 sm:h-80 object-cover"
           />
@@ -27,7 +27,7 @@ const ServicesSection = () => {
         {/* Terza immagine */}
         <div className="text-center border border-white">
           <img
-            src="/3.jpg" // Cambia con l'immagine appropriata
+            src="/taglio3.jpeg" // Cambia con l'immagine appropriata
             alt="Trattamenti"
             className="w-full h-60 sm:h-80 object-cover"
           />
