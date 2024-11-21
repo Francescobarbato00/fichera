@@ -25,10 +25,6 @@ export default function Contact() {
       <div className="pt-16">
         <ContactSection />
 
-        {/* Divisore */}
-        <div className="w-3/4 mx-auto border-t border-gray-300 my-8 bg-white"></div>
-
-
         <WorkingHoursSection />
       </div>
 
