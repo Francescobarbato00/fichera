@@ -31,7 +31,7 @@ const OtherBookingMethods = () => {
               <FaMapMarkerAlt className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
                 <h4 className="text-lg font-bold text-gray-800">Indirizzo Barbershop</h4>
-                <p className="text-gray-600">Via Roma, 123 - Milano</p>
+                <p className="text-gray-600">Via Alberto Moravia, 77 Roma RM, Italia CAP: 00143</p>
               </div>
             </div>
 
@@ -40,7 +40,7 @@ const OtherBookingMethods = () => {
               <FaEnvelope className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
                 <h4 className="text-lg font-bold text-gray-800">Email</h4>
-                <p className="text-gray-600">info@barbershop.it</p>
+                <p className="text-gray-600">df7barber@gmail.com</p>
               </div>
             </div>
 
@@ -49,7 +49,7 @@ const OtherBookingMethods = () => {
               <FaWhatsapp className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
                 <h4 className="text-lg font-bold text-gray-800">WhatsApp</h4>
-                <p className="text-gray-600">+39 345 6789012</p>
+                <p className="text-gray-600">+ 06 8398 6576</p>
               </div>
             </div>
 
