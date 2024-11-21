@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 const ProductSection = () => {
@@ -130,9 +131,12 @@ const ProductSection = () => {
 
             {/* Pulsante */}
             <div className="p-4">
-              <button className="w-full py-2 bg-yellow-500 text-white text-sm sm:text-base font-semibold rounded hover:bg-yellow-600 transition duration-300">
+              <Link
+                href={`/prodotti/${product.id}`}
+                className="block w-full py-2 bg-yellow-500 text-white text-sm sm:text-base font-semibold text-center rounded hover:bg-yellow-600 transition duration-300"
+              >
                 Acquista Ora
-              </button>
+              </Link>
             </div>
           </div>
         ))}
