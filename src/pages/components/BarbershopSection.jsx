@@ -1,5 +1,4 @@
 import React from "react";
-import { FaCut, FaBeer, FaSmile } from "react-icons/fa";
 
 const BarbershopSection = () => {
   return (
@@ -26,27 +25,39 @@ const BarbershopSection = () => {
           </p>
           <ul className="space-y-4">
             <li className="flex items-start space-x-4">
-              <span className="text-yellow-500 text-xl sm:text-2xl">
-                <FaSmile />
+              <span>
+                <img
+                  src="/1.svg"
+                  alt="Icona 1"
+                  className="w-8 h-8 sm:w-10 sm:h-10 filter-yellow"
+                />
               </span>
               <p className="text-gray-600 text-sm sm:text-base">
-                Un’esperienza personalizzata per ogni cliente.
+                Rasatura di precisione per ogni stile.
               </p>
             </li>
             <li className="flex items-start space-x-4">
-              <span className="text-yellow-500 text-xl sm:text-2xl">
-                <FaCut />
+              <span>
+                <img
+                  src="/2.svg"
+                  alt="Icona 2"
+                  className="w-8 h-8 sm:w-10 sm:h-10 filter-yellow"
+                />
               </span>
               <p className="text-gray-600 text-sm sm:text-base">
-                Tagli e stili innovativi per ogni occasione.
+                Tagli di precisione per un look impeccabile.
               </p>
             </li>
             <li className="flex items-start space-x-4">
-              <span className="text-yellow-500 text-xl sm:text-2xl">
-                <FaBeer />
+              <span>
+                <img
+                  src="/3.svg"
+                  alt="Icona 3"
+                  className="w-8 h-8 sm:w-10 sm:h-10 filter-yellow"
+                />
               </span>
               <p className="text-gray-600 text-sm sm:text-base">
-                La cura della barba con prodotti di alta qualità.
+                Trattamenti e styling con i migliori prodotti.
               </p>
             </li>
           </ul>
@@ -56,21 +67,33 @@ const BarbershopSection = () => {
       {/* Icone dei servizi */}
       <div className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 text-center">
         <div>
-          <FaCut className="text-yellow-500 text-5xl sm:text-6xl mx-auto mb-4" />
+          <img
+            src="/1.svg"
+            alt="Icona 1"
+            className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 filter-yellow"
+          />
           <h3 className="text-base sm:text-lg font-bold text-gray-800">
             Servizi di Taglio
           </h3>
         </div>
         <div>
-          <FaBeer className="text-yellow-500 text-5xl sm:text-6xl mx-auto mb-4" />
+          <img
+            src="/2.svg"
+            alt="Icona 2"
+            className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 filter-yellow"
+          />
           <h3 className="text-base sm:text-lg font-bold text-gray-800">
-            Cura della Barba
+            Barba
           </h3>
         </div>
         <div>
-          <FaSmile className="text-yellow-500 text-5xl sm:text-6xl mx-auto mb-4" />
+          <img
+            src="/3.svg"
+            alt="Icona 3"
+            className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 filter-yellow"
+          />
           <h3 className="text-base sm:text-lg font-bold text-gray-800">
-            Ambiente Accogliente
+            Styling e Acconciature
           </h3>
         </div>
       </div>
