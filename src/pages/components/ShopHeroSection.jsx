@@ -1,6 +1,13 @@
 import React from "react";
 
 const ShopHeroSection = () => {
+  const scrollToProducts = () => {
+    const targetSection = document.getElementById("product-section");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="relative h-[70vh] lg:h-screen flex items-center justify-center">
       {/* Immagine di sfondo */}
@@ -24,7 +31,10 @@ const ShopHeroSection = () => {
           <p className="text-sm sm:text-lg text-gray-300 mt-4 sm:mt-6">
             Il nostro barbershop è impegnato a fornire tagli di qualità e un servizio eccezionale a prezzi accessibili in un ambiente rilassante e amichevole.
           </p>
-          <button className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500 text-white text-sm sm:text-lg font-semibold rounded shadow hover:bg-yellow-600 transition duration-300">
+          <button
+            onClick={scrollToProducts}
+            className="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 bg-yellow-500 text-white text-sm sm:text-lg font-semibold rounded shadow hover:bg-yellow-600 transition duration-300"
+          >
             Scopri di più
           </button>
         </div>

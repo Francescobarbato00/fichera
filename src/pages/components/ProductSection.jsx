@@ -68,23 +68,21 @@ const ProductSection = () => {
     },
   ];
 
-  const renderStars = (rating) => {
-    return (
-      <div className="flex">
-        {[...Array(5)].map((_, i) => (
-          <FaStar
-            key={i}
-            className={`${
-              i < Math.floor(rating) ? "text-yellow-500" : "text-gray-300"
-            } text-sm`}
-          />
-        ))}
-      </div>
-    );
-  };
+  const renderStars = (rating) => (
+    <div className="flex">
+      {[...Array(5)].map((_, i) => (
+        <FaStar
+          key={i}
+          className={`${
+            i < Math.floor(rating) ? "text-yellow-500" : "text-gray-300"
+          } text-sm`}
+        />
+      ))}
+    </div>
+  );
 
   return (
-    <div className="py-12 sm:py-16 bg-white">
+    <div id="product-section" className="py-12 sm:py-16 bg-white">
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
           <span className="text-yellow-500">Prodotti</span> in Evidenza
@@ -99,7 +97,7 @@ const ProductSection = () => {
             key={product.id}
             className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
           >
-            {/* Immagine */}
+            {/* Immagine del Prodotto */}
             <div className="relative">
               <img
                 src={product.image}
@@ -127,7 +125,7 @@ const ProductSection = () => {
               <p>{product.description}</p>
             </div>
 
-            {/* Divider Line */}
+            {/* Divider */}
             <hr className="border-gray-200" />
 
             {/* Pulsante */}
