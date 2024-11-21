@@ -33,9 +33,9 @@ const MainHeader = () => {
           >
             <FaTiktok className="h-6 w-6" />
           </a>
-          <a href="https://wa.me/0683986576" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
-  <FaWhatsapp className="h-6 w-6" />
-</a>
+          <a href="https://wa.me/3517297915" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
+          <FaWhatsapp className="h-6 w-6" />
+          </a>
 
         </div>
 
