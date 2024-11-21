@@ -1,5 +1,5 @@
 import React from "react";
-import { FaInstagram, FaFacebook, FaTiktok, FaYoutube } from "react-icons/fa"; // Icone social
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from "react-icons/fa"; // Icone social inclusa WhatsApp
 import { MdAccountCircle, MdSearch, MdShoppingCart } from "react-icons/md"; // Icone utente, ricerca e carrello
 
 const MainHeader = () => {
@@ -32,6 +32,12 @@ const MainHeader = () => {
             className="hover:text-yellow-500"
           >
             <FaTiktok className="h-6 w-6" />
+          </a>
+          <a
+            href="tel:0683986576" // Collegamento per chiamare
+            className="hover:text-yellow-500"
+          >
+            <FaWhatsapp className="h-6 w-6" />
           </a>
         </div>
 
