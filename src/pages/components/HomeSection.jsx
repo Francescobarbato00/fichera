@@ -1,7 +1,12 @@
-import React from "react";
-import Link from "next/link"; // Importa Link da next/link
+import { useRouter } from "next/router";
 
 const HomeSection = () => {
+  const router = useRouter();
+
+  const navigateToAppointment = () => {
+    router.push("/Appointment");
+  };
+
   return (
     <div className="relative h-screen bg-gray-100">
       {/* Sfondo */}
@@ -21,13 +26,15 @@ const HomeSection = () => {
         <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-center sm:text-left">
           La rivoluzione dello stile: precisione, cura dei dettagli e
           un'esperienza unica che unisce tradizione e modernità.
+          Ora disponibile il nostro Chatbot di intelligenza artificiale per prenotare dove e quando vuoi!
         </p>
         <div className="mt-6 flex justify-start w-full">
-          <Link href="/Appointment">
-            <button className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300">
-              Prenota Ora
-            </button>
-          </Link>
+          <button
+            onClick={navigateToAppointment}
+            className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300"
+          >
+            Prenota Ora
+          </button>
         </div>
       </div>
     </div>
