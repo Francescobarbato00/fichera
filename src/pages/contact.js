@@ -26,7 +26,7 @@ export default function Contact() {
         <ContactSection />
 
         {/* Divisore */}
-        <div className="w-full sm:w-3/4 mx-auto border-t border-gray-300 my-4 sm:my-8"></div>
+        <div className="w-3/4 mx-auto border-t border-gray-300 my-8 bg-white"></div>
 
 
         <WorkingHoursSection />
