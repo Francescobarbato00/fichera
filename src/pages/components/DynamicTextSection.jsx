@@ -7,7 +7,7 @@ const DynamicTextSection = () => {
   const services = [
     "Taglio Uomo",
     "Cura della Barba",
-    "Trattamenti Capelli",
+    "Cura Capelli",
     "Servizio Bambini",
   ];
   const typingSpeed = 100;
