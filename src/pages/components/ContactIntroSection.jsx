@@ -13,9 +13,11 @@ const ContactIntroSection = () => {
     >
       {/* Overlay scuro per migliorare il contrasto */}
       <div className="absolute inset-0 bg-black opacity-70"></div>
-      <div className="relative z-10 px-6">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">Contattaci</h1>
-        <p className="text-lg md:text-xl max-w-3xl mx-auto">
+      <div className="relative z-10 px-4 sm:px-6">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6">
+          Contattaci
+        </h1>
+        <p className="text-base sm:text-lg md:text-xl max-w-lg sm:max-w-3xl mx-auto">
           Siamo qui per aiutarti! Inviaci le tue domande o feedback e ti
           ricontatteremo il prima possibile. Nel nostro barbershop ci impegniamo
           a offrire un servizio rapido e attento per garantire un'esperienza
