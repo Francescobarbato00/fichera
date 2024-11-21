@@ -23,7 +23,7 @@ const HomeSection = () => {
         <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide animate-fadeIn text-center sm:text-left">
           DFBARBERSHOP
         </h1>
-        <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-center sm:text-left">
+        <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-justify sm:text-left">
           La rivoluzione dello stile: precisione, cura dei dettagli e
           un'esperienza unica che unisce tradizione e modernità.
           Ora disponibile il nostro Chatbot di intelligenza artificiale per prenotare dove e quando vuoi!
