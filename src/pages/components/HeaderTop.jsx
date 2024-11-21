@@ -6,7 +6,7 @@ const HeaderTop = () => {
       <span className="text-center">
         PER PRENOTARE NEL NOSTRO BARBERSHOP |{" "}
         <a
-          href="tel:+390683986576" // Collegamento per avviare la chiamata
+          href="tel:0683986576" // Collegamento corretto senza spazi
           className="text-yellow-500 underline hover:text-yellow-300"
         >
           CHIAMA IL 06 8398 6576
