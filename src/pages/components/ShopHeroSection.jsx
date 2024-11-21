@@ -26,10 +26,11 @@ const ShopHeroSection = () => {
         {/* Testo */}
         <div className="w-full lg:w-1/2 lg:pl-16 mt-6 sm:mt-10 lg:mt-0 text-center lg:text-left">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Più di un semplice <span className="text-yellow-500">taglio di capelli</span>
+            Scopri i nostri <span className="text-yellow-500">prodotti esclusivi</span>
           </h1>
           <p className="text-sm sm:text-lg text-gray-300 mt-4 sm:mt-6">
-            Il nostro barbershop è impegnato a fornire tagli di qualità e un servizio eccezionale a prezzi accessibili in un ambiente rilassante e amichevole.
+            Esplora una selezione accurata di prodotti professionali per la cura dei capelli e della barba. 
+            Ogni articolo è stato scelto per offrirti qualità, efficacia e risultati superiori. Il nostro shop è pensato per chi vuole portare l’esperienza del barbershop a casa propria.
           </p>
           <button
             onClick={scrollToProducts}
