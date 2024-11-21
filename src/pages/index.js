@@ -25,9 +25,18 @@ export default function Home() {
         {/* Home Section */}
         <HomeSection />
         <BookAppointment />
+        <div className="relative z-20 bg-white py-1">
+        <div className="border-t border-gray-300 mx-auto w-3/4"></div>
+      </div>
         <ChatWidget />
         <ServicesSection />
+        <div className="relative z-20 bg-white py-1">
+        <div className="border-t border-gray-300 mx-auto w-3/4"></div>
+      </div>
         <BestSellers />
+        <div className="relative z-20 bg-white py-1">
+        <div className="border-t border-gray-300 mx-auto w-3/4"></div>
+      </div>
         <TestimonialsSection />
         <Footer />
       </div>
