@@ -20,7 +20,7 @@ const ProductDetails = ({ prodotto }) => {
   };
 
   return (
-    <>
+    <div className="bg-white min-h-screen">
       {/* Header del sito */}
       <MainHeader />
 
@@ -80,7 +80,7 @@ const ProductDetails = ({ prodotto }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -107,7 +107,8 @@ export async function getStaticProps({ params }) {
       id: 1,
       name: "Ciotola Acciaio per Sapone da Barba",
       price: "31.00€",
-      description: "Ciotola in acciaio inox perfetta per un'esperienza di rasatura di qualità.",
+      description:
+        "Ciotola in acciaio inox perfetta per un'esperienza di rasatura di qualità.",
       image: "/product.png",
       tag: "NUOVO",
     },
@@ -115,7 +116,8 @@ export async function getStaticProps({ params }) {
       id: 2,
       name: "Rasoio Dritto",
       price: "12.00€",
-      description: "Rasoio professionale per una rasatura precisa e confortevole.",
+      description:
+        "Rasoio professionale per una rasatura precisa e confortevole.",
       image: "/product.png",
       tag: "NUOVO",
     },
@@ -123,7 +125,8 @@ export async function getStaticProps({ params }) {
       id: 3,
       name: "Forbici e Pettine",
       price: "13.00€",
-      description: "Set forbici e pettine ideale per rifinire e modellare i capelli.",
+      description:
+        "Set forbici e pettine ideale per rifinire e modellare i capelli.",
       image: "/product.png",
       tag: "NUOVO",
     },
