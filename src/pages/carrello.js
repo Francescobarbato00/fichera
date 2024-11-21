@@ -27,8 +27,8 @@ export default function Carrello() {
       {/* Header del sito */}
       <MainHeader />
 
-      <div className="container mx-auto py-12 px-4 sm:px-6">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 text-center">
+      <div className="container mx-auto py-12 px-4 sm:px-6 bg-white text-black min-h-screen">
+        <h1 className="text-3xl sm:text-4xl font-bold text-black mb-8 text-center">
           Il tuo carrello
         </h1>
 
