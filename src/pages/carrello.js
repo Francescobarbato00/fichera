@@ -1,17 +1,34 @@
 import { useCart } from "../context/CartContext";
 import { useRouter } from "next/router";
 import MainHeader from "./components/MainHeader"; // Importa l'header del sito
+import { useState } from "react";
 
 export default function Carrello() {
   const { cart, removeFromCart } = useCart();
   const router = useRouter();
+  const [showForm, setShowForm] = useState(false); // Stato per mostrare il form
+  const [formData, setFormData] = useState({
+    name: "",
+    surname: "",
+    email: "",
+    address: "",
+    city: "",
+    postalCode: "",
+  });
 
-  const handleCheckout = async () => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handlePayment = async (e) => {
+    e.preventDefault(); // Evita il refresh della pagina
+
     try {
       const res = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ items: cart }),
+        body: JSON.stringify({ items: cart, userData: formData }),
       });
 
       const session = await res.json();
@@ -74,8 +91,8 @@ export default function Carrello() {
               ))}
             </div>
 
-            {/* Riepilogo Totale e Checkout */}
-            <div className="text-center sm:text-right">
+            {/* Riepilogo Totale */}
+            <div className="text-center sm:text-right mb-6">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800">
                 Totale:{" "}
                 <span className="text-yellow-500">
@@ -89,13 +106,120 @@ export default function Carrello() {
                   €
                 </span>
               </h3>
-              <button
-                onClick={handleCheckout}
-                className="mt-6 bg-yellow-500 text-white font-semibold py-3 px-6 rounded hover:bg-yellow-600 transition duration-300 w-full sm:w-auto"
-              >
-                Procedi al pagamento
-              </button>
             </div>
+
+            {/* Mostra il form se l'utente clicca su Procedi al pagamento */}
+            {!showForm ? (
+              <div className="text-center">
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="mt-6 bg-yellow-500 text-white font-semibold py-3 px-6 rounded hover:bg-yellow-600 transition duration-300 w-full sm:w-auto"
+                >
+                  Procedi al pagamento
+                </button>
+              </div>
+            ) : (
+              <form onSubmit={handlePayment} className="max-w-xl mx-auto bg-gray-50 shadow-md rounded px-8 py-6">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Dati di fatturazione</h2>
+
+                <div className="mb-4">
+                  <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
+                    Nome
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="surname" className="block text-gray-700 font-bold mb-2">
+                    Cognome
+                  </label>
+                  <input
+                    type="text"
+                    id="surname"
+                    name="surname"
+                    value={formData.surname}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="address" className="block text-gray-700 font-bold mb-2">
+                    Indirizzo
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="city" className="block text-gray-700 font-bold mb-2">
+                    Città
+                  </label>
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <div className="mb-4">
+                  <label htmlFor="postalCode" className="block text-gray-700 font-bold mb-2">
+                    CAP
+                  </label>
+                  <input
+                    type="text"
+                    id="postalCode"
+                    name="postalCode"
+                    value={formData.postalCode}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-2 border rounded-lg"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-yellow-500 text-white font-semibold py-3 px-6 rounded hover:bg-yellow-600 transition duration-300"
+                >
+                  Paga
+                </button>
+              </form>
+            )}
           </div>
         )}
       </div>
