@@ -6,7 +6,6 @@ import ChatWidget from "./components/ChatWidget";
 import BookAppointment from "./components/BookAppointment";
 import ServicesSection from "./components/ServicesSection";
 import BestSellers from "./components/BestSellers";
-import NewsSection from "./components/NewsSection";
 import Footer from "./components/Footer";
 import IntroAnimation from "./components/IntroAnimation";
 import TestimonialsSection from "./components/TestimonialsSection";
@@ -29,8 +28,7 @@ export default function Home() {
         <ChatWidget />
         <ServicesSection />
         <BestSellers />
-        <NewsSection />
-        < TestimonialsSection />
+        <TestimonialsSection />
         <Footer />
       </div>
     </IntroAnimation>

@@ -37,10 +37,11 @@ const BestSellers = () => {
   return (
     <div className="py-16 bg-white">
       <div className="text-center mb-12">
-        <h2 className="text-2xl sm:text-3xl font-semibold text-black">
-          I NOSTRI PRODOTTI
-        </h2>
-      </div>
+  <h2 className="text-2xl sm:text-3xl font-semibold text-black">
+    I NOSTRI <span className="text-yellow-500">PRODOTTI</span>
+  </h2>
+</div>
+
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-8 px-4">
         {products.map((product) => (
           <div
