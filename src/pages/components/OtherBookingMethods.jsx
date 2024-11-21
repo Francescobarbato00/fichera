@@ -49,7 +49,7 @@ const OtherBookingMethods = () => {
               <FaWhatsapp className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
                 <h4 className="text-lg font-bold text-gray-800">WhatsApp</h4>
-                <p className="text-gray-600">+ 06 8398 6576</p>
+                <p className="text-gray-600">+351 729 7915</p>
               </div>
             </div>
 

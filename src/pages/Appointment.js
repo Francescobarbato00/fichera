@@ -4,8 +4,8 @@ import MainHeader from "./components/MainHeader";
 import AppointmentHeader from "./components/AppointmentHeader";
 import ChatWidget from "./components/ChatWidget";
 import Footer from "./components/Footer";
-import BookingFormSection from "./components/BookingFormSection";
 import OtherBookingMethods from "./components/OtherBookingMethods";
+import HowToBookSection from "./components/HowToBookSection";
 
 export default function Appointment() {
   return (
@@ -22,7 +22,7 @@ export default function Appointment() {
       <AppointmentHeader />
 
       {/* Booking Form Section */}
-      <BookingFormSection />
+      <HowToBookSection />
 
       {/* Divisore */}
       <div className="relative z-20 bg-white py-1">
