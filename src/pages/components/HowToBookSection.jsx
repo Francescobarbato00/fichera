@@ -27,7 +27,7 @@ const HowToBookSection = () => {
           <li>
             <span className="font-semibold">Indica il servizio desiderato:</span> 
             Specifica il trattamento che vorresti prenotare, ad esempio: 
-            "Taglio Uomo" o "Cura della Barba".
+            "Taglio Uomo" o "Barba".
           </li>
           <li>
             <span className="font-semibold">Indica data e preferenze:</span> 
