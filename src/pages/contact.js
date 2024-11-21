@@ -23,9 +23,7 @@ export default function Contact() {
 
       {/* Sezione Contatti */}
       <div className="pt-16">
-      <div className="relative z-20 bg-white py-1">
-        <div className="border-t border-gray-300 mx-auto w-3/4"></div>
-      </div>
+      
         <ContactSection />
 
         <WorkingHoursSection />
