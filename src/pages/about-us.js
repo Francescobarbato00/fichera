@@ -22,10 +22,6 @@ export default function AboutUs() {
       {/* About Us Section */}
       <AboutUsSection />
       <BarbershopSection />
-      {/* Divider */}
-      <div className="flex justify-center my-8">
-        <div className="w-1/2 border-t border-black"></div>
-      </div>
 
       {/* Founder Section */}
       <FounderSection />

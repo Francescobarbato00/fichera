@@ -20,27 +20,27 @@ const AboutUsSection = () => {
   ];
 
   return (
-    <div className="py-16 bg-white">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold text-gray-800">
+    <div className="py-12 sm:py-16 bg-white">
+      <div className="text-center mb-8 sm:mb-12 px-4">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
           <span className="text-yellow-500">Chi</span> Siamo
         </h2>
-        <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
+        <p className="text-gray-600 mt-4 text-sm sm:text-base max-w-lg sm:max-w-3xl mx-auto">
           Il nostro barbershop è molto più di un semplice luogo per tagliarsi i capelli. È uno spazio
           dedicato a chi desidera un servizio impeccabile, un luogo di fiducia dove tradizione e innovazione si incontrano per valorizzare il tuo stile personale.
         </p>
       </div>
 
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 px-4">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="bg-white shadow-md border border-gray-200 rounded p-6 text-center"
+            className="bg-white shadow-md border border-gray-200 rounded p-4 sm:p-6 text-center"
           >
-            <h3 className="text-xl font-semibold text-yellow-500 mb-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-yellow-500 mb-3 sm:mb-4">
               {feature.title}
             </h3>
-            <p className="text-gray-600">{feature.description}</p>
+            <p className="text-gray-600 text-sm sm:text-base">{feature.description}</p>
           </div>
         ))}
       </div>
