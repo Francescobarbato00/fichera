@@ -4,23 +4,51 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 const BarbersSection = () => {
   const barbers = [
     {
-      name: " Daniele Fichera",
+      name: "Daniele",
       role: "Barbiere Professionista",
-      image: "/img.jpg", // Percorso immagine
+      image: "/daniele.jpg", // Percorso immagine
       description:
         "Esperto in tagli classici e moderni. Passione e precisione al tuo servizio.",
     },
     {
-      name: "George Smith",
+      name: "Guglielmo detto gullo",
       role: "Barbiere Senior",
-      image: "/img.jpg", // Percorso immagine
+      image: "/gullo.jpg", // Percorso immagine
       description:
         "Specializzato in cura della barba e trattamenti personalizzati.",
     },
     {
-      name: "Frank Giordano",
+      name: "Luca",
       role: "Barbiere Creativo",
-      image: "/img.jpg", // Percorso immagine
+      image: "/luca.jpg", // Percorso immagine
+      description:
+        "Innovazione e stile per un look unico e originale.",
+    },
+    {
+      name: "Claudia",
+      role: "Barbiere Creativo",
+      image: "/claudia.jpg", // Percorso immagine
+      description:
+        "Innovazione e stile per un look unico e originale.",
+    },
+    {
+      name: "Il maestro",
+      role: "Barbiere Creativo",
+      image: "/maestro.jpg", // Percorso immagine
+      description:
+        "Innovazione e stile per un look unico e originale.",
+    },
+    {
+      name: "Lele",
+      role: "Barbiere Creativo",
+      image: "/Lele.jpg", // Percorso immagine
+      description:
+        "Innovazione e stile per un look unico e originale.",
+    },
+    {
+      name: "Massimo",
+      role: "Barbiere Creativo",
+      image: "/Massimo.jpg", // Percorso immagine
       description:
         "Innovazione e stile per un look unico e originale.",
     },
@@ -41,31 +69,33 @@ const BarbersSection = () => {
         {barbers.map((barber, index) => (
           <div key={index} className="relative group">
             {/* Immagine */}
-            <div className="overflow-hidden rounded-lg shadow-lg">
+            <div className="h-64 w-full overflow-hidden rounded-lg shadow-lg">
               <img
                 src={barber.image}
                 alt={barber.name}
-                className="w-full h-52 sm:h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
               />
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white text-center px-4">
-                <p className="text-xs sm:text-sm mb-3 sm:mb-4">{barber.description}</p>
-                <div className="flex space-x-3 sm:space-x-4">
-                  <a href="#" className="hover:text-gray-200">
-                    <FaFacebookF />
-                  </a>
-                  <a href="#" className="hover:text-gray-200">
-                    <FaTwitter />
-                  </a>
-                  <a href="#" className="hover:text-gray-200">
-                    <FaInstagram />
-                  </a>
-                  <a href="#" className="hover:text-gray-200">
-                    <FaYoutube />
-                  </a>
-                </div>
+            </div>
+
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white text-center px-4">
+              <p className="text-xs sm:text-sm mb-3 sm:mb-4">{barber.description}</p>
+              <div className="flex space-x-3 sm:space-x-4">
+                <a href="#" className="hover:text-gray-200">
+                  <FaFacebookF />
+                </a>
+                <a href="#" className="hover:text-gray-200">
+                  <FaTwitter />
+                </a>
+                <a href="#" className="hover:text-gray-200">
+                  <FaInstagram />
+                </a>
+                <a href="#" className="hover:text-gray-200">
+                  <FaYoutube />
+                </a>
               </div>
             </div>
+
             {/* Informazioni */}
             <div className="bg-gray-100 text-gray-800 text-center py-3 sm:py-4">
               <h3 className="text-base sm:text-lg font-semibold text-yellow-500">

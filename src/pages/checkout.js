@@ -1,9 +1,12 @@
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import HeaderTop from "./components/HeaderTop";
+import MainHeader from "./components/MainHeader";
+import Footer from "./components/Footer";
 
 export default function Checkout() {
-  const { cart } = useCart(); // Recupera il carrello dal contesto
+  const { cart } = useCart();
   const [formData, setFormData] = useState({
     name: "",
     surname: "",
@@ -12,6 +15,7 @@ export default function Checkout() {
     city: "",
     postalCode: "",
   });
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleInputChange = (e) => {
@@ -21,129 +25,158 @@ export default function Checkout() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      // Invia dati all'API per il pagamento e l'email
-      const res = await fetch("/api/submit-order", {
+      // Salva i dati nel localStorage per usarli successivamente
+      localStorage.setItem("formData", JSON.stringify(formData));
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      // Crea una sessione di pagamento e ottieni l'URL di Stripe Checkout
+      const res = await fetch("/api/create-payment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ cart, formData }),
       });
 
-      if (res.ok) {
-        alert("Ordine completato! Controlla la tua email.");
-        router.push("/success"); // Reindirizza alla pagina di successo
-      } else {
-        throw new Error("Errore durante l'invio dell'ordine.");
-      }
+      const { url } = await res.json();
+
+      if (!url) throw new Error("Errore durante la creazione della sessione di pagamento");
+
+      // Redirigi a Stripe Checkout
+      window.location.href = url;
     } catch (error) {
-      console.error(error);
+      console.error("Errore durante il pagamento:", error);
       alert("Si è verificato un errore. Riprova.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto py-12 px-4 sm:px-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-8 text-center">Checkout</h1>
+    <>
+      <HeaderTop />
+      <MainHeader />
 
-      <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white shadow-md rounded px-8 py-6">
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
-            Nome
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
+      <div className="container mx-auto py-12 px-4 sm:px-6 bg-gray-100 min-h-screen">
+        <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">Checkout</h1>
+
+        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-10">
+          <h2 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
+            Inserisci i tuoi dati
+          </h2>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
+                  Nome
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="surname" className="block text-gray-700 font-medium mb-2">
+                  Cognome
+                </label>
+                <input
+                  type="text"
+                  id="surname"
+                  name="surname"
+                  value={formData.surname}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="address" className="block text-gray-700 font-medium mb-2">
+                Indirizzo
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+              />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label htmlFor="city" className="block text-gray-700 font-medium mb-2">
+                  Città
+                </label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="postalCode" className="block text-gray-700 font-medium mb-2">
+                  CAP
+                </label>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  value={formData.postalCode}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-end mt-6">
+              <button
+                type="submit"
+                className={`px-6 py-3 bg-yellow-500 text-white rounded-lg shadow hover:bg-yellow-600 ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={loading}
+              >
+                {loading ? "Caricamento..." : "Completa l'ordine"}
+              </button>
+            </div>
+          </form>
         </div>
+      </div>
 
-        <div className="mb-4">
-          <label htmlFor="surname" className="block text-gray-700 font-bold mb-2">
-            Cognome
-          </label>
-          <input
-            type="text"
-            id="surname"
-            name="surname"
-            value={formData.surname}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 font-bold mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="address" className="block text-gray-700 font-bold mb-2">
-            Indirizzo
-          </label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="city" className="block text-gray-700 font-bold mb-2">
-            Città
-          </label>
-          <input
-            type="text"
-            id="city"
-            name="city"
-            value={formData.city}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="postalCode" className="block text-gray-700 font-bold mb-2">
-            CAP
-          </label>
-          <input
-            type="text"
-            id="postalCode"
-            name="postalCode"
-            value={formData.postalCode}
-            onChange={handleInputChange}
-            required
-            className="w-full px-4 py-2 border rounded-lg"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-yellow-500 text-white font-semibold py-3 px-6 rounded hover:bg-yellow-600 transition duration-300"
-        >
-          Completa l'ordine
-        </button>
-      </form>
-    </div>
+      <Footer />
+    </>
   );
 }
