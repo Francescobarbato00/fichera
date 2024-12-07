@@ -10,40 +10,56 @@ export default async function handler(req, res) {
   const { cart, formData } = req.body;
 
   try {
-    // Calcola il totale dell'importo
-    const totalAmount = cart.reduce(
-      (total, item) =>
-        total + item.quantity * parseFloat(item.price.replace("€", "")),
-      0
-    );
+    console.log("Ricevuto carrello:", cart);
+    console.log("Ricevuto formData:", formData);
 
-    // Crea una sessione di pagamento Stripe Checkout
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ["card"],
-      line_items: cart.map((item) => ({
+    // Prepara i line items per Stripe Checkout
+    const line_items = cart.map((item) => {
+      const productData = {
+        name: item.name, // Nome prodotto
+      };
+
+      // Aggiunge l'immagine solo se non è vuota
+      if (item.image && item.image.trim() !== "") {
+        productData.images = [item.image];
+      }
+
+      return {
         price_data: {
           currency: "eur",
-          product_data: {
-            name: item.name,
-          },
-          unit_amount: Math.round(parseFloat(item.price.replace("€", "")) * 100),
+          product_data: productData,
+          unit_amount: Math.round(item.price * 100), // Prezzo in centesimi
         },
         quantity: item.quantity,
-      })),
+      };
+    });
+
+    console.log("Line Items preparati:", line_items);
+
+    // Crea la sessione di pagamento Stripe
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items,
       mode: "payment",
       success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/cancel`,
       metadata: {
         email: formData.email,
         name: `${formData.name} ${formData.surname}`,
+        phone: formData.phone,
         address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
+        citofono: formData.citofono,
+        interno: formData.interno,
+        notes: formData.additionalNotes,
       },
     });
 
-    // Restituisci l'URL della sessione di checkout
-    res.status(200).json({ url: session.url });
+    console.log("Sessione Stripe creata:", session);
+
+    // Invia l'URL della sessione di checkout
+    return res.status(200).json({ url: session.url });
   } catch (error) {
-    console.error("Errore durante la creazione della sessione di pagamento:", error);
-    res.status(500).json({ message: "Errore durante il pagamento" });
+    console.error("Errore Stripe:", error.message);
+    return res.status(500).json({ message: "Errore durante la creazione della sessione di pagamento" });
   }
 }

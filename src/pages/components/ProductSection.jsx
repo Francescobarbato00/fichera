@@ -1,73 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FaStar } from "react-icons/fa";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 const ProductSection = () => {
-  const products = [
-    {
-      id: 1,
-      name: "Ciotola Acciaio per Sapone da Barba",
-      price: "31.00€",
-      rating: 5,
-      image: "/product.png",
-      tag: "NUOVO",
-      description: "Ciotola in acciaio inox perfetta per un'esperienza di rasatura di qualità.",
-    },
-    {
-      id: 2,
-      name: "Rasoio Dritto",
-      price: "12.00€",
-      rating: 4,
-      image: "/product.png",
-      tag: "NUOVO",
-      description: "Rasoio professionale per una rasatura precisa e confortevole.",
-    },
-    {
-      id: 3,
-      name: "Forbici e Pettine",
-      price: "13.00€",
-      rating: 4.5,
-      image: "/product.png",
-      tag: "NUOVO",
-      description: "Set forbici e pettine ideale per rifinire e modellare i capelli.",
-    },
-    {
-      id: 4,
-      name: "Rasoio di Sicurezza in Acciaio",
-      price: "19.00€",
-      rating: 5,
-      image: "/product.png",
-      tag: "NUOVO",
-      description: "Rasoio robusto e sicuro per una rasatura classica e impeccabile.",
-    },
-    {
-      id: 5,
-      name: "Spazzola Barba in Legno",
-      price: "15.00€",
-      rating: 4.5,
-      image: "/product.png",
-      tag: "BESTSELLER",
-      description: "Spazzola naturale per mantenere la barba morbida e ben curata.",
-    },
-    {
-      id: 6,
-      name: "Shampoo per Capelli e Barba",
-      price: "18.00€",
-      rating: 5,
-      image: "/product.png",
-      tag: "NOVITÀ",
-      description: "Shampoo delicato per pulire e nutrire capelli e barba.",
-    },
-    {
-      id: 7,
-      name: "Olio da Barba",
-      price: "20.00€",
-      rating: 4.8,
-      image: "/product.png",
-      tag: "NUOVO",
-      description: "Olio idratante per barba per un aspetto sano e lucente.",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const snapshot = await getDocs(collection(db, "products"));
+      const productList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setProducts(productList);
+    };
+    fetchProducts();
+  }, []);
 
   const renderStars = (rating) => (
     <div className="flex">
@@ -83,57 +33,27 @@ const ProductSection = () => {
   );
 
   return (
-    <div id="product-section" className="py-12 sm:py-16 bg-white">
-      <div className="text-center mb-8 sm:mb-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-          <span className="text-yellow-500">Prodotti</span> in Evidenza
-        </h2>
-        <p className="text-sm sm:text-base text-gray-600 mt-4">
-          Scopri i nostri prodotti di alta qualità per la cura dei tuoi capelli e della tua barba.
-        </p>
-      </div>
-      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 px-4 sm:px-6">
+    <div className="py-12 bg-white">
+      <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition duration-300"
+            className="bg-white shadow rounded-lg overflow-hidden"
           >
-            {/* Immagine del Prodotto */}
-            <div className="relative">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-40 sm:h-48 object-cover"
-              />
-              <div className="absolute top-2 left-2 bg-gray-800 text-white text-xs font-semibold px-2 py-1 rounded">
-                {product.tag}
-              </div>
-            </div>
-
-            {/* Dettagli del Prodotto */}
+            <img
+              src={product.image || "/placeholder-image.png"}
+              alt={product.name}
+              className="w-full h-48 object-cover"
+            />
             <div className="p-4">
-              <h3 className="text-base sm:text-lg font-semibold text-gray-800 truncate">
-                {product.name}
-              </h3>
-              <p className="text-yellow-500 font-bold text-lg sm:text-xl mt-2">
-                {product.price}
-              </p>
-              <div className="mt-2">{renderStars(product.rating)}</div>
+              <h3 className="font-bold text-gray-800">{product.name}</h3>
+              <p className="text-yellow-500 font-semibold">{product.price}€</p>
+              {renderStars(product.rating || 5)}
             </div>
-
-            {/* Descrizione */}
-            <div className="px-4 pb-4 text-gray-600 text-xs sm:text-sm">
-              <p>{product.description}</p>
-            </div>
-
-            {/* Divider */}
-            <hr className="border-gray-200" />
-
-            {/* Pulsante */}
             <div className="p-4">
               <Link
                 href={`/prodotti/${product.id}`}
-                className="block w-full py-2 bg-yellow-500 text-white text-sm sm:text-base font-semibold text-center rounded hover:bg-yellow-600 transition duration-300"
+                className="block text-center bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600"
               >
                 Acquista Ora
               </Link>

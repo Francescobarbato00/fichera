@@ -1,80 +1,64 @@
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 import { useRouter } from "next/router";
-import { useCart } from "@/context/CartContext"; // Importa il contesto del carrello
-import MainHeader from "../components/MainHeader"; // Importa l'header del sito
+import { useCart } from "@/context/CartContext";
+import MainHeader from "../components/MainHeader";
 
 const ProductDetails = ({ prodotto }) => {
   const router = useRouter();
-  const { addToCart } = useCart(); // Usa la funzione "addToCart" dal contesto del carrello
+  const { addToCart } = useCart();
 
-  if (router.isFallback) {
-    return <div>Caricamento...</div>;
-  }
+  if (!prodotto) return <div>Caricamento...</div>;
 
   const handleAddToCart = () => {
-    addToCart(prodotto); // Aggiungi il prodotto al carrello
+    addToCart(prodotto);
     alert("Prodotto aggiunto al carrello!");
   };
 
-  const goToCart = () => {
-    router.push("/carrello"); // Vai alla pagina del carrello
-  };
-
   return (
-    <div className="bg-white min-h-screen">
-      {/* Header del sito */}
+    <div>
       <MainHeader />
+      <div className="container mx-auto p-6">
+        <div className="flex justify-between mb-4">
+          {/* Pulsante Torna Indietro */}
+          <button
+            onClick={() => router.back()}
+            className="text-gray-500 hover:underline"
+          >
+            ← Torna indietro
+          </button>
 
-      <div className="container mx-auto py-12 px-4 sm:px-6">
-        {/* Pulsante per tornare indietro */}
-        <button
-          className="mb-6 bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-300 transition duration-300"
-          onClick={() => router.back()}
-        >
-          ← Torna indietro
-        </button>
+          {/* Pulsante Torna allo Shop */}
+          <button
+            onClick={() => router.push("/shop")}
+            className="text-gray-500 hover:underline"
+          >
+            🛒 Torna allo Shop
+          </button>
+        </div>
 
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col lg:flex-row">
-          {/* Immagine del prodotto */}
-          <div className="lg:w-1/2">
-            <img
-              src={prodotto.image}
-              alt={prodotto.name}
-              className="w-full h-full object-cover"
-            />
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <img src={prodotto.image} alt={prodotto.name} className="w-full" />
+          <div>
+            <h1 className="text-3xl font-bold">{prodotto.name}</h1>
+            <p className="text-yellow-500 text-xl mt-2">{prodotto.price}€</p>
+            <p className="mt-4">{prodotto.description}</p>
 
-          {/* Dettagli del prodotto */}
-          <div className="lg:w-1/2 p-8 flex flex-col justify-between">
-            <div>
-              <h1 className="text-4xl font-bold text-gray-800">{prodotto.name}</h1>
-              <p className="text-yellow-500 text-3xl font-semibold mt-4">
-                {prodotto.price}
-              </p>
-              <p className="text-gray-600 text-lg mt-4">{prodotto.description}</p>
+            {/* Pulsante Aggiungi al Carrello */}
+            <button
+              onClick={handleAddToCart}
+              className="mt-6 bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600"
+            >
+              Aggiungi al Carrello
+            </button>
 
-              {/* Testo riempitivo */}
-              <p className="text-gray-500 text-sm mt-6 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-                ullamcorper nisl vel nisl tristique, at aliquam enim vehicula.
-                Integer convallis ligula non nulla gravida, vel tempor nisi
-                commodo. Sed vitae eros sit amet est mattis euismod id sit amet
-                magna.
-              </p>
-            </div>
-
-            {/* Pulsanti Aggiungi al Carrello e Vai al Carrello */}
-            <div className="mt-8 flex flex-col gap-4">
+            {/* Pulsante Vai al Carrello con margine aggiuntivo */}
+            <div className="mt-4">
               <button
-                onClick={handleAddToCart}
-                className="bg-yellow-500 text-white font-semibold py-3 px-6 rounded hover:bg-yellow-600 transition duration-300"
+                onClick={() => router.push("/carrello")}
+                className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
               >
-                Aggiungi al carrello
-              </button>
-              <button
-                onClick={goToCart}
-                className="bg-gray-800 text-white font-semibold py-3 px-6 rounded hover:bg-gray-900 transition duration-300"
-              >
-                Vai al carrello
+                Vai al Carrello
               </button>
             </div>
           </div>
@@ -84,65 +68,15 @@ const ProductDetails = ({ prodotto }) => {
   );
 };
 
-export async function getStaticPaths() {
-  const products = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-  ];
-  const paths = products.map((product) => ({
-    params: { id: product.id.toString() },
-  }));
+export async function getServerSideProps({ params }) {
+  const docRef = doc(db, "products", params.id);
+  const docSnap = await getDoc(docRef);
 
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps({ params }) {
-  const products = [
-    {
-      id: 1,
-      name: "Ciotola Acciaio per Sapone da Barba",
-      price: "31.00€",
-      description:
-        "Ciotola in acciaio inox perfetta per un'esperienza di rasatura di qualità.",
-      image: "/product.png",
-      tag: "NUOVO",
-    },
-    {
-      id: 2,
-      name: "Rasoio Dritto",
-      price: "12.00€",
-      description:
-        "Rasoio professionale per una rasatura precisa e confortevole.",
-      image: "/product.png",
-      tag: "NUOVO",
-    },
-    {
-      id: 3,
-      name: "Forbici e Pettine",
-      price: "13.00€",
-      description:
-        "Set forbici e pettine ideale per rifinire e modellare i capelli.",
-      image: "/product.png",
-      tag: "NUOVO",
-    },
-  ];
-
-  const prodotto = products.find((p) => p.id.toString() === params.id);
-
-  if (!prodotto) {
-    return {
-      notFound: true,
-    };
+  if (!docSnap.exists()) {
+    return { notFound: true };
   }
 
-  return {
-    props: { prodotto },
-  };
+  return { props: { prodotto: { id: docSnap.id, ...docSnap.data() } } };
 }
 
 export default ProductDetails;

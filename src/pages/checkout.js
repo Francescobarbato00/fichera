@@ -1,3 +1,37 @@
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+
+  // Log dei dati inviati
+  console.log("Carrello inviato:", cart);
+  console.log("FormData inviato:", formData);
+
+  try {
+    const res = await fetch("/api/create-payment", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ cart, formData }),
+    });
+
+    const data = await res.json();
+    console.log("Risposta dall'API:", data); // Log per vedere la risposta
+
+    if (!data.url) {
+      throw new Error("Errore durante la creazione della sessione di pagamento");
+    }
+
+    window.location.href = data.url; // Reindirizza a Stripe Checkout
+  } catch (error) {
+    console.error("Errore durante il pagamento:", error.message);
+    alert("Si è verificato un errore. Riprova.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+
+
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -11,9 +45,13 @@ export default function Checkout() {
     name: "",
     surname: "",
     email: "",
+    phone: "",
     address: "",
     city: "",
     postalCode: "",
+    citofono: "",
+    interno: "",
+    additionalNotes: "",
   });
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -63,7 +101,7 @@ export default function Checkout() {
 
         <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-10">
           <h2 className="text-2xl font-semibold text-gray-700 mb-6 text-center">
-            Inserisci i tuoi dati
+            Inserisci i tuoi dati di spedizione
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -115,6 +153,21 @@ export default function Checkout() {
             </div>
 
             <div>
+              <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
+                Telefono
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                required
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+              />
+            </div>
+
+            <div>
               <label htmlFor="address" className="block text-gray-700 font-medium mb-2">
                 Indirizzo
               </label>
@@ -129,7 +182,7 @@ export default function Checkout() {
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label htmlFor="city" className="block text-gray-700 font-medium mb-2">
                   Città
@@ -159,6 +212,48 @@ export default function Checkout() {
                   className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
                 />
               </div>
+
+              <div>
+                <label htmlFor="citofono" className="block text-gray-700 font-medium mb-2">
+                  Citofono
+                </label>
+                <input
+                  type="text"
+                  id="citofono"
+                  name="citofono"
+                  value={formData.citofono}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="interno" className="block text-gray-700 font-medium mb-2">
+                Interno/Appartamento
+              </label>
+              <input
+                type="text"
+                id="interno"
+                name="interno"
+                value={formData.interno}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="additionalNotes" className="block text-gray-700 font-medium mb-2">
+                Note aggiuntive
+              </label>
+              <textarea
+                id="additionalNotes"
+                name="additionalNotes"
+                rows="3"
+                value={formData.additionalNotes}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+              />
             </div>
 
             <div className="flex justify-end mt-6">
