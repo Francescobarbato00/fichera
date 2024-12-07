@@ -15,7 +15,7 @@ const AboutUsSection = () => {
     {
       title: "Ambiente Accogliente",
       description:
-        "Nel nostro barbershop troverai un ambiente caldo e accogliente, progettato per offrirti un'esperienza di relax completa. Che tu venga per un semplice taglio o per un trattamento completo, il nostro obiettivo è farti sentire a tuo agio e coccolato.",
+        "Nel nostro barbershop troverai un ambiente caldo e accogliente, progettato per offrirti un'esperienza di relax completa. Che tu venga per un semplice taglio o per un trattamento completo, il nostro obiettivo è farti sentire a tuo agio e coccolato!",
     },
   ];
 
