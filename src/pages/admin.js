@@ -12,6 +12,8 @@ const supabase = createClient(
 
 export default function Admin({ user }) {
   const router = useRouter();
+
+  // Stato per i prodotti
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: "",
@@ -48,7 +50,11 @@ export default function Admin({ user }) {
     setProducts(productList);
   };
 
-  // Carica l'immagine su Supabase Storage
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  // Caricamento immagine su Supabase Storage
   const uploadImage = async (file) => {
     const fileName = `${Date.now()}_${file.name}`;
     const filePath = `product-images/${fileName}`;
@@ -83,7 +89,7 @@ export default function Admin({ user }) {
       await addDoc(collection(db, "products"), {
         name: newProduct.name,
         description: newProduct.description,
-        price: newProduct.price,
+        price: parseFloat(newProduct.price),
         stock: parseInt(newProduct.stock),
         rating: parseFloat(newProduct.rating),
         image: imageUrl,
@@ -109,10 +115,6 @@ export default function Admin({ user }) {
     await deleteDoc(doc(db, "products", id));
     fetchProducts();
   };
-
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   return (
     <div className="p-6">
@@ -168,6 +170,7 @@ export default function Admin({ user }) {
         </button>
       </div>
 
+      {/* Lista prodotti */}
       <ul>
         {products.map((product) => (
           <li key={product.id} className="flex justify-between items-center border p-2 mb-4">
@@ -195,25 +198,31 @@ export default function Admin({ user }) {
   );
 }
 
-// Controllo lato server per bloccare l'accesso
+// Protezione lato server con credenziali da env
 export async function getServerSideProps(context) {
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  );
+  const { req } = context;
+  const cookies = req.headers.cookie || "";
+  const email = cookies
+    .split("; ")
+    .find((row) => row.startsWith("email="))
+    ?.split("=")[1];
+  const password = cookies
+    .split("; ")
+    .find((row) => row.startsWith("password="))
+    ?.split("=")[1];
 
-  const { data: { user } } = await supabase.auth.getUser(context.req.cookies);
-
-  if (!user) {
-    return {
-      redirect: {
-        destination: "/login",
-        permanent: false,
-      },
-    };
+  // Verifica credenziali dal file .env.local
+  if (
+    email === process.env.NEXT_PUBLIC_ADMIN_EMAIL &&
+    password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD
+  ) {
+    return { props: { user: { email } } };
   }
 
   return {
-    props: { user },
+    redirect: {
+      destination: "/login",
+      permanent: false,
+    },
   };
 }

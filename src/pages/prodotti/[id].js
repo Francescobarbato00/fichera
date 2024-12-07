@@ -16,11 +16,11 @@ const ProductDetails = ({ prodotto }) => {
   };
 
   return (
-    <div>
+    <div className="bg-white text-black min-h-screen">
       <MainHeader />
-      <div className="container mx-auto p-6">
-        <div className="flex justify-between mb-4">
-          {/* Pulsante Torna Indietro */}
+      <div className="container mx-auto p-4 md:p-6">
+        {/* Pulsanti di navigazione */}
+        <div className="flex justify-between mb-6">
           <button
             onClick={() => router.back()}
             className="text-gray-500 hover:underline"
@@ -28,7 +28,6 @@ const ProductDetails = ({ prodotto }) => {
             ← Torna indietro
           </button>
 
-          {/* Pulsante Torna allo Shop */}
           <button
             onClick={() => router.push("/shop")}
             className="text-gray-500 hover:underline"
@@ -37,26 +36,34 @@ const ProductDetails = ({ prodotto }) => {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <img src={prodotto.image} alt={prodotto.name} className="w-full" />
-          <div>
-            <h1 className="text-3xl font-bold">{prodotto.name}</h1>
+        {/* Griglia responsiva per immagine e dettagli */}
+        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+          {/* Immagine del prodotto */}
+          <img
+            src={prodotto.image}
+            alt={prodotto.name}
+            className="w-full max-w-xs lg:max-w-md rounded-lg shadow-lg"
+          />
+
+          {/* Dettagli del prodotto */}
+          <div className="w-full text-center lg:text-left">
+            <h1 className="text-2xl lg:text-4xl font-bold">{prodotto.name}</h1>
             <p className="text-yellow-500 text-xl mt-2">{prodotto.price}€</p>
-            <p className="mt-4">{prodotto.description}</p>
+            <p className="mt-4 text-base lg:text-lg">{prodotto.description}</p>
 
             {/* Pulsante Aggiungi al Carrello */}
             <button
               onClick={handleAddToCart}
-              className="mt-6 bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600"
+              className="mt-6 w-full lg:w-auto bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 transition duration-200"
             >
               Aggiungi al Carrello
             </button>
 
-            {/* Pulsante Vai al Carrello con margine aggiuntivo */}
+            {/* Pulsante Vai al Carrello */}
             <div className="mt-4">
               <button
                 onClick={() => router.push("/carrello")}
-                className="bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600"
+                className="w-full lg:w-auto bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition duration-200"
               >
                 Vai al Carrello
               </button>

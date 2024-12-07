@@ -1,12 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { createClient } from "@supabase/supabase-js";
-
-// Configurazione di Supabase
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,31 +7,25 @@ export default function Login() {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  // Credenziali lette dalle variabili di ambiente
+  const hardcodedEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+  const hardcodedPassword = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+
   // Funzione per il login
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     setError("");
 
-    try {
-      // Effettua il login con Supabase
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+    // Confronto credenziali
+    if (email === hardcodedEmail && password === hardcodedPassword) {
+      // Salva credenziali nei cookie per controllo lato server
+      document.cookie = `email=${email}; path=/`;
+      document.cookie = `password=${password}; path=/`;
 
-      if (error) {
-        console.error("Errore nel login:", error.message);
-        setError("Credenziali errate. Riprova.");
-      } else {
-        alert("Login riuscito!");
-        router.push("/admin"); // Reindirizza alla pagina Admin
-      }
-    } catch (err) {
-      console.error("Errore generale:", err.message);
-      setError("Si è verificato un errore. Riprova.");
-      console.log("Reindirizzamento a /admin...");
-      router.push("/admin");
-
+      alert("Login riuscito!");
+      router.push("/admin"); // Reindirizza alla pagina Admin
+    } else {
+      setError("Credenziali errate. Riprova.");
     }
   };
 
