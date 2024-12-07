@@ -10,7 +10,7 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-export default function Admin() {
+export default function Admin({ user }) {
   const router = useRouter();
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
@@ -22,7 +22,7 @@ export default function Admin() {
     image: null,
   });
 
-  // Controllo autenticazione lato client
+  // Controllo autenticazione lato client (backup per sessioni scadute)
   useEffect(() => {
     const checkAuth = async () => {
       const {
@@ -156,20 +156,6 @@ export default function Admin() {
           className="border p-2"
         />
         <input
-          type="number"
-          placeholder="Stock"
-          value={newProduct.stock}
-          onChange={(e) => setNewProduct({ ...newProduct, stock: e.target.value })}
-          className="border p-2"
-        />
-        <input
-          type="number"
-          placeholder="Rating (1-5)"
-          value={newProduct.rating}
-          onChange={(e) => setNewProduct({ ...newProduct, rating: e.target.value })}
-          className="border p-2"
-        />
-        <input
           type="file"
           onChange={(e) => setNewProduct({ ...newProduct, image: e.target.files[0] })}
           className="border p-2"
@@ -207,4 +193,27 @@ export default function Admin() {
       </ul>
     </div>
   );
+}
+
+// Controllo lato server per bloccare l'accesso
+export async function getServerSideProps(context) {
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  );
+
+  const { data: { user } } = await supabase.auth.getUser(context.req.cookies);
+
+  if (!user) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { user },
+  };
 }
