@@ -117,7 +117,7 @@ export default function Checkout() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
                 />
               </div>
 
@@ -132,7 +132,7 @@ export default function Checkout() {
                   value={formData.surname}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
                 />
               </div>
             </div>
@@ -148,7 +148,7 @@ export default function Checkout() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
               />
             </div>
 
@@ -163,7 +163,7 @@ export default function Checkout() {
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
               />
             </div>
 
@@ -178,7 +178,7 @@ export default function Checkout() {
                 value={formData.address}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
               />
             </div>
 
@@ -194,7 +194,7 @@ export default function Checkout() {
                   value={formData.city}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
                 />
               </div>
 
@@ -209,7 +209,7 @@ export default function Checkout() {
                   value={formData.postalCode}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black"
                 />
               </div>
 
@@ -223,7 +223,7 @@ export default function Checkout() {
                   name="citofono"
                   value={formData.citofono}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                  className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
                 />
               </div>
             </div>
@@ -238,7 +238,7 @@ export default function Checkout() {
                 name="interno"
                 value={formData.interno}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 text-black placeholder-gray-400 focus:text-black"
               />
             </div>
 
@@ -252,7 +252,7 @@ export default function Checkout() {
                 rows="3"
                 value={formData.additionalNotes}
                 onChange={handleInputChange}
-                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300"
+                className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-yellow-300 ttext-black placeholder-gray-400 focus:text-black"
               />
             </div>
 
