@@ -24,22 +24,6 @@ export default function Admin({ user }) {
     image: null,
   });
 
-  // Controllo autenticazione lato client (backup per sessioni scadute)
-  useEffect(() => {
-    const checkAuth = async () => {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
-
-      if (!user || error) {
-        alert("Accesso negato. Effettua il login.");
-        router.push("/login");
-      }
-    };
-    checkAuth();
-  }, [router]);
-
   // Recupera i prodotti
   const fetchProducts = async () => {
     const snapshot = await getDocs(collection(db, "products"));
