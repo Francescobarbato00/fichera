@@ -50,7 +50,7 @@ const ServicesListSection = () => {
           <span className="text-yellow-500">I Nostri</span> Servizi
         </h2>
         <p className="text-sm sm:text-base text-gray-600 mt-2 sm:mt-4">
-          Scopri la nostra gamma di servizi, creati per soddisfare ogni esigenza con professionalità e cura.
+          Scopri la nostra gamma di servizi, creati per soddisfare ogni esigenza con professionalità e cura
         </p>
       </div>
 
