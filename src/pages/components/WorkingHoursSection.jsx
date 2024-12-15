@@ -29,12 +29,12 @@ const WorkingHoursSection = () => {
         <table className="w-full text-gray-800 text-sm sm:text-base">
           <tbody>
             {[
-              { day: "Lunedì", hours: "09:00 - 19:00" },
-              { day: "Martedì", hours: "09:00 - 19:00" },
-              { day: "Mercoledì", hours: "09:00 - 19:00" },
-              { day: "Giovedì", hours: "09:00 - 19:00" },
-              { day: "Venerdì", hours: "09:00 - 19:00" },
-              { day: "Sabato", hours: "09:00 - 19:00" },
+              { day: "Lunedì", hours: "Chiuso" },
+              { day: "Martedì", hours: "08:00 - 20:00" },
+              { day: "Mercoledì", hours: "08:00 - 20:00" },
+              { day: "Giovedì", hours: "08:00 - 20:00" },
+              { day: "Venerdì", hours: "08:00 - 20:00" },
+              { day: "Sabato", hours: "08:00 - 20:00" },
               { day: "Domenica", hours: "Chiuso" },
             ].map((schedule, index) => (
               <tr key={index} className="border-b border-gray-200">

@@ -9,14 +9,24 @@ const ServicesListSection = () => {
       description: "Un taglio classico e moderno, perfetto per ogni occasione, completo di shampoo, rifiniture precise e cura del dettaglio.",
       icon: <FaCut className="text-yellow-500 text-3xl sm:text-4xl" />,
     },
+    
+    {
+      title: "Barba con Panno",
+      price: "15€",
+      description: "Definizione, taglio, rifinitura e cura completa per la tua barba, con particolare attenzione alla salute e alla nutrizione del follicolo.",
+      icon: <FaMugHot className="text-yellow-500 text-3xl sm:text-4xl" />,
+    },
+    
     {
       title: "Barba Modellata",
       price: "10€",
       description: "Definizione, taglio, rifinitura e cura completa per la tua barba, con particolare attenzione alla salute e alla nutrizione del follicolo.",
       icon: <FaMugHot className="text-yellow-500 text-3xl sm:text-4xl" />,
     },
+    
+    
     {
-      title: "Barba con Trattamento",
+      title: "Taglio Bambino (fino a 7 anni)",
       price: "15€",
       description: "Un trattamento completo con panno caldo e freddo, massaggio facciale profumato, oli nutrienti, balsami e una rasatura impeccabile per un look fresco e curato.",
       icon: <FaChild className="text-yellow-500 text-3xl sm:text-4xl" />,
@@ -28,11 +38,36 @@ const ServicesListSection = () => {
       icon: <FaPaintBrush className="text-yellow-500 text-3xl sm:text-4xl" />,
     },
     {
-      title: "Maschera Viso",
+      title: "Skin Care",
       price: "10€",
       description: "Trattamento rigenerante con maschera viso per una pelle fresca, luminosa e ben idratata, ideale per rilassare e rivitalizzare.",
       icon: <FaUserTie className="text-yellow-500 text-3xl sm:text-4xl" />,
     },
+    {
+      title: "Barba + Skin Care",
+      price: "20€",
+      description: "Trattamento rigenerante con maschera viso per una pelle fresca, luminosa e ben idratata, ideale per rilassare e rivitalizzare.",
+      icon: <FaUserTie className="text-yellow-500 text-3xl sm:text-4xl" />,
+    },
+    {
+      title: "Tricocamera",
+      price: "10€",
+      description: "Trattamento rigenerante con maschera viso per una pelle fresca, luminosa e ben idratata, ideale per rilassare e rivitalizzare.",
+      icon: <FaUserTie className="text-yellow-500 text-3xl sm:text-4xl" />,
+    },
+    {
+      title: "Tricocamera + Pulizia",
+      price: "15€",
+      description: "Trattamento rigenerante con maschera viso per una pelle fresca, luminosa e ben idratata, ideale per rilassare e rivitalizzare.",
+      icon: <FaUserTie className="text-yellow-500 text-3xl sm:text-4xl" />,
+    },
+    {
+      title: "Pulizia della Cute",
+      price: "10€",
+      description: "Trattamento rigenerante con maschera viso per una pelle fresca, luminosa e ben idratata, ideale per rilassare e rivitalizzare.",
+      icon: <FaUserTie className="text-yellow-500 text-3xl sm:text-4xl" />,
+    },
+ 
   ];
 
   const extraServices = [

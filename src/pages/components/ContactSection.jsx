@@ -71,7 +71,7 @@ const ContactSection = () => {
             </h3>
             <p className="text-gray-700 text-sm sm:text-base">
               Tel: 06 8398 6576<br />
-              Lun - Sab: 09:00 - 19:00
+              Martedì - Sabato: 08:00 - 20:00
             </p>
           </div>
         </div>
