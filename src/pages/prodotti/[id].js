@@ -3,6 +3,7 @@ import { db } from "@/lib/firebase";
 import { useRouter } from "next/router";
 import { useCart } from "@/context/CartContext";
 import MainHeader from "../components/MainHeader";
+import { toast } from "sonner"; // Importa la libreria Sonner
 
 const ProductDetails = ({ prodotto }) => {
   const router = useRouter();
@@ -12,7 +13,9 @@ const ProductDetails = ({ prodotto }) => {
 
   const handleAddToCart = () => {
     addToCart(prodotto);
-    alert("Prodotto aggiunto al carrello!");
+    toast.success("Prodotto aggiunto al carrello!", {
+      description: "Puoi visualizzare i dettagli nel carrello.",
+    });
   };
 
   return (
