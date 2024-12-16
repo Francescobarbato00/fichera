@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { toast } from "sonner"; // Importa Sonner per le notifiche
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -22,7 +23,9 @@ export default function Login() {
       document.cookie = `email=${email}; path=/`;
       document.cookie = `password=${password}; path=/`;
 
-      alert("Login riuscito!");
+      toast.success("Login riuscito!", {
+        description: "Stai accedendo all'area admin.",
+      });
       router.push("/admin"); // Reindirizza alla pagina Admin
     } else {
       setError("Credenziali errate. Riprova.");
@@ -32,7 +35,9 @@ export default function Login() {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
       <div className="bg-white p-8 rounded shadow-md w-full max-w-sm">
-      <h1 className="text-2xl font-bold mb-6 text-center text-black">Login Admin</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center text-black">
+          Login Admin
+        </h1>
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="mb-4">
@@ -45,23 +50,21 @@ export default function Login() {
               className="w-full border p-2 rounded text-black placeholder-gray-400 focus:text-black"
               required
             />
-
           </div>
           <div className="mb-4">
             <label className="block text-gray-700">Password</label>
             <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Inserisci password"
-                className="w-full border p-2 rounded text-black placeholder-gray-400 focus:text-black"
-                required
-              />
-
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Inserisci password"
+              className="w-full border p-2 rounded text-black placeholder-gray-400 focus:text-black"
+              required
+            />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
           >
             Login
           </button>
