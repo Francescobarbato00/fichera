@@ -20,18 +20,21 @@ const HomeSection = () => {
 
       {/* Contenuto */}
       <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 sm:px-8 text-white max-w-4xl">
-        <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide animate-fadeIn text-center sm:text-left">
+        {/* Titolo con animazione */}
+        <h1 className="text-3xl sm:text-5xl font-bold uppercase tracking-wide animate-fadeInUp text-center sm:text-left">
           DFBARBERSHOP
         </h1>
-        <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-justify sm:text-left">
+        {/* Testo con animazione */}
+        <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-justify sm:text-left animate-fadeIn">
           La rivoluzione dello stile: precisione, cura dei dettagli e
           un'esperienza unica che unisce tradizione e modernità.
           Ora disponibile il nostro Chatbot di intelligenza artificiale per prenotare dove e quando vuoi!
         </p>
+        {/* Bottone con animazione */}
         <div className="mt-6 flex justify-start w-full">
           <button
             onClick={navigateToAppointment}
-            className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300"
+            className="px-6 py-3 bg-yellow-500 text-black font-medium uppercase hover:bg-yellow-600 transition-all duration-300 animate-fadeInLeft"
           >
             Prenota Ora
           </button>
