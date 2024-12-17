@@ -58,7 +58,7 @@ const OtherBookingMethods = () => {
               <FaClock className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
                 <h4 className="text-lg font-bold text-gray-800">Orari di Apertura</h4>
-                <p className="text-gray-600">Mar - Sab: 10:00 - 19:00</p>
+                <p className="text-gray-600">Mar - Sab: 08:00 - 20:00</p>
               </div>
             </div>
           </div>
