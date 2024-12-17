@@ -1,17 +1,47 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const ContactSection = () => {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Intersection Observer per attivare le animazioni
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.2 } // Triggera quando il 20% della sezione è visibile
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
-    <div className="py-6 px-4 sm:px-6 md:px-10 lg:px-16 bg-white">
+    <div
+      ref={sectionRef}
+      className={`py-6 px-4 sm:px-6 md:px-10 lg:px-16 bg-white ${
+        isVisible ? "" : "hidden-section"
+      }`}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 gap-8 md:grid-cols-2">
         {/* Sezione Sinistra */}
-        <div>
+        <div className={isVisible ? "animate-fadeInLeft" : ""}>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
             <span className="text-yellow-500">Siamo</span> qui per aiutarti!
           </h2>
           <p className="text-gray-700 mb-4 text-sm sm:text-base">
-            Hai domande o dubbi? Inviaci un
-            messaggio compilando il modulo qui sotto.
+            Hai domande o dubbi? Inviaci un messaggio compilando il modulo qui
+            sotto.
           </p>
           <form className="space-y-3">
             <input
@@ -39,7 +69,7 @@ const ContactSection = () => {
         </div>
 
         {/* Sezione Destra */}
-        <div className="space-y-5">
+        <div className={`space-y-5 ${isVisible ? "animate-fadeInRight" : ""}`}>
           <div>
             <h3 className="text-lg sm:text-xl font-bold text-gray-800">
               <span className="text-yellow-500">Sede</span>
