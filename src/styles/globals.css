@@ -340,18 +340,8 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease-out;
 }
-/* Animazioni */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
+/* Animazioni */
 @keyframes fadeInLeft {
   from {
     opacity: 0;
@@ -374,11 +364,32 @@ body {
   }
 }
 
-/* Classi animate */
-.animate-fadeInUp {
-  animation: fadeInUp 1s ease-out forwards;
+/* Modifica animazioni per schermi piccoli */
+@media (max-width: 640px) {
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
+/* Classi animate */
 .animate-fadeInLeft {
   animation: fadeInLeft 1s ease-out forwards;
 }
@@ -387,6 +398,7 @@ body {
   animation: fadeInRight 1s ease-out forwards;
 }
 
+/* Elementi nascosti inizialmente */
 .hidden-section {
   opacity: 0;
   transition: opacity 0.5s ease-out;
