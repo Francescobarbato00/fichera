@@ -275,3 +275,38 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease-out;
 }
+/* Animazioni */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Classi animate */
+.animate-fadeInUp {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* Elementi nascosti inizialmente */
+.hidden-section {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}

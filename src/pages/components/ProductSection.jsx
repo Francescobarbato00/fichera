@@ -7,6 +7,7 @@ import { db } from "@/lib/firebase";
 const ProductSection = () => {
   const [products, setProducts] = useState([]);
 
+  // Recupera i prodotti da Firebase Firestore
   useEffect(() => {
     const fetchProducts = async () => {
       const snapshot = await getDocs(collection(db, "products"));
@@ -19,6 +20,7 @@ const ProductSection = () => {
     fetchProducts();
   }, []);
 
+  // Funzione per generare le stelle
   const renderStars = (rating) => (
     <div className="flex">
       {[...Array(5)].map((_, i) => (
@@ -33,27 +35,40 @@ const ProductSection = () => {
   );
 
   return (
-    <div className="py-12 bg-white">
+    <div id="product-section" className="py-12 bg-white">
+      {/* Titolo principale */}
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          I nostri <span className="text-yellow-500">prodotti</span>
+        </h2>
+      </div>
+
+      {/* Griglia dei prodotti */}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
         {products.map((product) => (
           <div
             key={product.id}
             className="bg-white shadow rounded-lg overflow-hidden"
           >
+            {/* Immagine del prodotto */}
             <img
               src={product.image || "/placeholder-image.png"}
               alt={product.name}
               className="w-full h-48 object-cover"
             />
+
+            {/* Dettagli del prodotto */}
             <div className="p-4">
               <h3 className="font-bold text-gray-800">{product.name}</h3>
               <p className="text-yellow-500 font-semibold">{product.price}€</p>
               {renderStars(product.rating || 5)}
             </div>
+
+            {/* Pulsante Acquista */}
             <div className="p-4">
               <Link
                 href={`/prodotti/${product.id}`}
-                className="block text-center bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600"
+                className="block text-center bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition duration-300"
               >
                 Acquista Ora
               </Link>
