@@ -45,9 +45,7 @@ const MainHeader = () => {
 
         {/* Icone di ricerca e carrello */}
         <div className="flex items-center space-x-4">
-          <button className="hover:text-yellow-500">
-            <MdSearch className="h-6 w-6" />
-          </button>
+         
           <a href="/carrello" className="hover:text-yellow-500">
             <MdShoppingCart className="h-6 w-6" />
           </a>

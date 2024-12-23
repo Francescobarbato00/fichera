@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { collection, getDocs, addDoc, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "@/lib/firebase";
-import { createClient } from "@supabase/supabase-js";
-
-// Configurazione Supabase
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
 
 export default function Admin({ user }) {
   const router = useRouter();
@@ -21,7 +20,7 @@ export default function Admin({ user }) {
     price: "",
     stock: "",
     rating: "",
-    image: null,
+    image: "", // URL dell'immagine
   });
 
   // Recupera i prodotti
@@ -38,27 +37,6 @@ export default function Admin({ user }) {
     fetchProducts();
   }, []);
 
-  // Caricamento immagine su Supabase Storage
-  const uploadImage = async (file) => {
-    const fileName = `${Date.now()}_${file.name}`;
-    const filePath = `product-images/${fileName}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from("product-images")
-      .upload(filePath, file);
-
-    if (uploadError) {
-      console.error("Errore nel caricamento immagine:", uploadError.message);
-      throw uploadError;
-    }
-
-    const { data: signedUrlData } = await supabase.storage
-      .from("product-images")
-      .createSignedUrl(filePath, 604800); // URL valido per 1 settimana
-
-    return signedUrlData.signedUrl;
-  };
-
   // Aggiungi un prodotto
   const handleAddProduct = async () => {
     if (
@@ -68,15 +46,13 @@ export default function Admin({ user }) {
       newProduct.rating &&
       newProduct.image
     ) {
-      const imageUrl = await uploadImage(newProduct.image);
-
       await addDoc(collection(db, "products"), {
         name: newProduct.name,
         description: newProduct.description,
         price: parseFloat(newProduct.price),
         stock: parseInt(newProduct.stock),
         rating: parseFloat(newProduct.rating),
-        image: imageUrl,
+        image: newProduct.image, // Utilizzo dell'URL fornito
       });
 
       setNewProduct({
@@ -85,12 +61,12 @@ export default function Admin({ user }) {
         price: "",
         stock: "",
         rating: "",
-        image: null,
+        image: "",
       });
 
       fetchProducts();
     } else {
-      alert("Compila tutti i campi richiesti e seleziona un'immagine!");
+      alert("Compila tutti i campi richiesti!");
     }
   };
 
@@ -131,19 +107,45 @@ export default function Admin({ user }) {
           type="text"
           placeholder="Descrizione"
           value={newProduct.description}
-          onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, description: e.target.value })
+          }
           className="border p-2"
         />
         <input
           type="number"
           placeholder="Prezzo (€)"
           value={newProduct.price}
-          onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, price: e.target.value })
+          }
           className="border p-2"
         />
         <input
-          type="file"
-          onChange={(e) => setNewProduct({ ...newProduct, image: e.target.files[0] })}
+          type="number"
+          placeholder="Stock"
+          value={newProduct.stock}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, stock: e.target.value })
+          }
+          className="border p-2"
+        />
+        <input
+          type="number"
+          placeholder="Rating"
+          value={newProduct.rating}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, rating: e.target.value })
+          }
+          className="border p-2"
+        />
+        <input
+          type="text"
+          placeholder="URL Immagine"
+          value={newProduct.image}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, image: e.target.value })
+          }
           className="border p-2"
         />
         <button
@@ -157,7 +159,10 @@ export default function Admin({ user }) {
       {/* Lista prodotti */}
       <ul>
         {products.map((product) => (
-          <li key={product.id} className="flex justify-between items-center border p-2 mb-4">
+          <li
+            key={product.id}
+            className="flex justify-between items-center border p-2 mb-4"
+          >
             <div>
               <h3 className="font-bold">{product.name}</h3>
               <p>Prezzo: {product.price}€</p>
