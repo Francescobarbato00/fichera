@@ -51,28 +51,18 @@ const Footer = () => {
           <div className="h-[1px] w-16 bg-white mb-4 mx-auto md:mx-0"></div>
           <ul className="text-xs leading-relaxed space-y-2">
             <li>
-              <a href="#" className="hover:underline">
-                Unisciti a noi
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
+              <a href="/spedizione" className="hover:underline">
                 Politica di spedizione
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/rimborsi" className="hover:underline">
                 Politica di rimborso
               </a>
             </li>
             <li>
-              <a href="#" className="hover:underline">
+              <a href="/privacy" className="hover:underline">
                 Politica sulla privacy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Termini di servizio
               </a>
             </li>
           </ul>

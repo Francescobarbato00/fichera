@@ -5,53 +5,54 @@ const BarbersSection = () => {
   const barbers = [
     {
       name: "Daniele",
-      role: "Barbiere Professionista",
+      role: "Titolare",
       image: "/daniele.jpg", // Percorso immagine
       description:
-        "Esperto in tagli classici e moderni. Passione e precisione al tuo servizio.",
+        "Esperto in tagli classici e moderni. Passione e precisione al tuo servizio. La passione per ciò che facciamo è ciò che rende ogni cliente unico.",
     },
     {
       name: "Guglielmo detto gullo",
-      role: "Barbiere Senior",
+      role: "Barbiere",
       image: "/gullo.jpg", // Percorso immagine
       description:
-        "Specializzato in cura della barba e trattamenti personalizzati.",
+        "Specializzato in cura della barba e trattamenti personalizzati. Ogni barba racconta una storia, ed io sono qui per valorizzarla.",
     },
     {
       name: "Luca",
-      role: "Barbiere Creativo",
+      role: "Barbiere",
       image: "/luca.jpg", // Percorso immagine
       description:
-        "Innovazione e stile per un look unico e originale.",
+        "Innovazione e stile per un look unico e originale. Il tuo stile è la mia ispirazione per creare qualcosa di speciale.",
     },
     {
       name: "Claudia",
-      role: "Barbiere Creativo",
+      role: "Barbiere",
       image: "/claudia.jpg", // Percorso immagine
       description:
-        "Innovazione e stile per un look unico e originale.",
+        "Innovazione e stile per un look unico e originale. Un sorriso e un taglio perfetto possono cambiare la giornata.",
     },
     {
       name: "Il maestro",
-      role: "Barbiere Creativo",
+      role: "Barbiere",
       image: "/maestro.jpg", // Percorso immagine
       description:
-        "Innovazione e stile per un look unico e originale.",
+        "Innovazione e stile per un look unico e originale. L’arte del taglio non si impara, si vive ogni giorno.",
     },
     {
       name: "Lele",
-      role: "Barbiere Creativo",
+      role: "Barbiere",
       image: "/Lele.jpg", // Percorso immagine
       description:
-        "Innovazione e stile per un look unico e originale.",
+        "Innovazione e stile per un look unico e originale. La bellezza è nei dettagli, e io mi prendo cura di ognuno di essi.",
     },
     {
       name: "Massimo",
-      role: "Barbiere Creativo",
+      role: "Barbiere",
       image: "/Massimo.jpg", // Percorso immagine
       description:
-        "Innovazione e stile per un look unico e originale.",
+        "Innovazione e stile per un look unico e originale. Ogni cliente è un’opera d’arte, e io sono qui per perfezionarla.",
     },
+    
   ];
 
   return (
@@ -80,20 +81,7 @@ const BarbersSection = () => {
             {/* Hover Overlay */}
             <div className="absolute inset-0 bg-yellow-500 bg-opacity-80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-white text-center px-4">
               <p className="text-xs sm:text-sm mb-3 sm:mb-4">{barber.description}</p>
-              <div className="flex space-x-3 sm:space-x-4">
-                <a href="#" className="hover:text-gray-200">
-                  <FaFacebookF />
-                </a>
-                <a href="#" className="hover:text-gray-200">
-                  <FaTwitter />
-                </a>
-                <a href="#" className="hover:text-gray-200">
-                  <FaInstagram />
-                </a>
-                <a href="#" className="hover:text-gray-200">
-                  <FaYoutube />
-                </a>
-              </div>
+              
             </div>
 
             {/* Informazioni */}
