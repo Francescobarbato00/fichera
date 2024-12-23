@@ -54,7 +54,7 @@ const RefundPolicy = () => {
         </section>
 
         <section className="mb-6">
-          <h2 className="text-2xl font-semibold mb-4">Spese di Reso</h2>
+          <h2 className="text-2xl font-semibold mb-4">Spese di Reso:</h2>
           <p>
             Le spese di spedizione per il reso sono a carico del cliente, salvo nei casi in cui
             il prodotto ricevuto sia stato danneggiato o difettoso.

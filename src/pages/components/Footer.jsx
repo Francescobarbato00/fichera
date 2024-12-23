@@ -1,7 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFacebook, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleJoinClick = async () => {
+    if (!email) {
+      setMessage("Per favore, inserisci un'email valida.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        setMessage("Iscrizione completata con successo!");
+        setEmail(""); // Pulisce il campo email
+      } else {
+        setMessage("Errore durante l'iscrizione. Riprova più tardi.");
+      }
+    } catch (error) {
+      console.error("Errore:", error);
+      setMessage("Errore durante l'iscrizione. Riprova più tardi.");
+    }
+  };
+
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8 px-6">
@@ -15,13 +43,19 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-start space-y-2 md:space-y-0">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               className="w-full md:flex-1 px-4 py-2 text-black text-sm placeholder-gray-600 border border-white focus:outline-none"
             />
-            <button className="bg-white text-black px-5 py-2 text-xs font-bold uppercase mt-2 md:mt-0 md:ml-2">
+            <button
+              onClick={handleJoinClick}
+              className="bg-white text-black px-5 py-2 text-xs font-bold uppercase mt-2 md:mt-0 md:ml-2"
+            >
               Join
             </button>
           </div>
+          {message && <p className="text-xs mt-2">{message}</p>}
         </div>
 
         {/* Sezione Social */}
@@ -39,9 +73,8 @@ const Footer = () => {
               <FaTiktok className="h-6 w-6" />
             </a>
             <a href="https://wa.me/0683986576" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-500">
-  <FaWhatsapp className="h-6 w-6" />
-</a>
-
+              <FaWhatsapp className="h-6 w-6" />
+            </a>
           </div>
         </div>
 
