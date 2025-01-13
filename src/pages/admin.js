@@ -77,8 +77,8 @@ export default function Admin({ user }) {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Gestione Prodotti</h1>
+    <div className="p-6 bg-white text-black">
+      <h1 className="text-2xl font-bold mb-4 text-black">Gestione Prodotti</h1>
       <div className="flex gap-4 mb-6">
         <button
           onClick={() => router.push("/")}
@@ -164,7 +164,7 @@ export default function Admin({ user }) {
             className="flex justify-between items-center border p-2 mb-4"
           >
             <div>
-              <h3 className="font-bold">{product.name}</h3>
+              <h3 className="font-bold text-black">{product.name}</h3>
               <p>Prezzo: {product.price}€</p>
               <p>Stock: {product.stock}</p>
               <p>Rating: {product.rating}</p>
