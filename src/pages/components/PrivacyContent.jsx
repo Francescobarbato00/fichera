@@ -2,9 +2,11 @@ import React from "react";
 
 const PrivacyContent = () => {
   return (
-    <div className="container mx-auto px-4 py-8 flex justify-center">
+    <div className="container mx-auto px-4 py-8 flex justify-center bg-white text-black md:bg-transparent md:text-current">
       <div className="max-w-2xl">
-        <h1 className="text-3xl font-bold mb-6 text-center">Politica di Privacy</h1>
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          Politica di Privacy
+        </h1>
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">Introduzione</h2>
@@ -25,9 +27,7 @@ const PrivacyContent = () => {
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">Come Utilizziamo i Dati</h2>
-          <p>
-            Utilizziamo i tuoi dati personali per:
-          </p>
+          <p>Utilizziamo i tuoi dati personali per:</p>
           <ul className="list-disc list-inside">
             <li>Fornire i nostri servizi e gestire le tue richieste.</li>
             <li>Migliorare l'esperienza utente e personalizzare i contenuti.</li>
@@ -53,9 +53,7 @@ const PrivacyContent = () => {
 
         <section className="mb-6">
           <h2 className="text-2xl font-semibold mb-4">Diritti dell'Utente</h2>
-          <p>
-            Hai il diritto di:
-          </p>
+          <p>Hai il diritto di:</p>
           <ul className="list-disc list-inside">
             <li>Accedere, correggere o eliminare i tuoi dati personali.</li>
             <li>Revocare il consenso al trattamento dei dati.</li>
@@ -76,7 +74,10 @@ const PrivacyContent = () => {
           <h2 className="text-2xl font-semibold mb-4">Contattaci</h2>
           <p>
             Per domande o richieste relative alla nostra politica di privacy, puoi
-            contattarci all'indirizzo email: <a href="mailto:df7barber@gmail.com" className="text-blue-500 underline">df7barber@gmail.com</a>.
+            contattarci all'indirizzo email:{" "}
+            <a href="mailto:df7barber@gmail.com" className="text-blue-500 underline">
+              df7barber@gmail.com
+            </a>.
           </p>
         </section>
 
@@ -86,9 +87,7 @@ const PrivacyContent = () => {
             Se ci fornisci i tuoi dati personali per acquistare prodotti o accedere ai nostri servizi, ti assicuriamo
             che verranno trattati con la massima cura e nel rispetto della normativa vigente sulla privacy.
           </p>
-          <p>
-            Questi dati potrebbero includere:
-          </p>
+          <p>Questi dati potrebbero includere:</p>
           <ul className="list-disc list-inside">
             <li>Nome e cognome.</li>
             <li>Indirizzo email e numero di telefono.</li>

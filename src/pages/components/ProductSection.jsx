@@ -10,12 +10,16 @@ const ProductSection = () => {
   // Recupera i prodotti da Firebase Firestore
   useEffect(() => {
     const fetchProducts = async () => {
-      const snapshot = await getDocs(collection(db, "products"));
-      const productList = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setProducts(productList);
+      try {
+        const snapshot = await getDocs(collection(db, "products"));
+        const productList = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(productList);
+      } catch (error) {
+        console.error("Errore nel recupero dei prodotti:", error);
+      }
     };
     fetchProducts();
   }, []);
@@ -45,36 +49,42 @@ const ProductSection = () => {
 
       {/* Griglia dei prodotti */}
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white shadow rounded-lg overflow-hidden"
-          >
-            {/* Immagine del prodotto */}
-            <img
-              src={product.image || "/placeholder-image.png"}
-              alt={product.name}
-              className="w-full h-48 object-cover"
-            />
+        {products.length > 0 ? (
+          products.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white shadow rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300"
+            >
+              {/* Immagine del prodotto con fallback e lazy loading */}
+              <img
+                src={product.image || "/placeholder-image.png"}
+                alt={product.name}
+                className="w-full h-48 object-cover"
+                loading="lazy"
+                onError={(e) => (e.target.src = "/placeholder-image.png")}
+              />
 
-            {/* Dettagli del prodotto */}
-            <div className="p-4">
-              <h3 className="font-bold text-gray-800">{product.name}</h3>
-              <p className="text-yellow-500 font-semibold">{product.price}€</p>
-              {renderStars(product.rating || 5)}
-            </div>
+              {/* Dettagli del prodotto */}
+              <div className="p-4">
+                <h3 className="font-bold text-gray-800">{product.name}</h3>
+                <p className="text-yellow-500 font-semibold">{product.price}€</p>
+                {renderStars(product.rating || 5)}
+              </div>
 
-            {/* Pulsante Acquista */}
-            <div className="p-4">
-              <Link
-                href={`/prodotti/${product.id}`}
-                className="block text-center bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition duration-300"
-              >
-                Acquista Ora
-              </Link>
+              {/* Pulsante Acquista */}
+              <div className="p-4">
+                <Link
+                  href={`/prodotti/${product.id}`}
+                  className="block text-center bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition duration-300"
+                >
+                  Acquista Ora
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p className="text-center text-gray-600">Caricamento prodotti...</p>
+        )}
       </div>
     </div>
   );
