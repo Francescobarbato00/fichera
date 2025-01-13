@@ -101,6 +101,11 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+
+      {/* Sezione Partita IVA */}
+      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-xs text-gray-400">
+        © 2025 Daniele Fichera Barber Shop. Tutti i diritti riservati. P.IVA: 17455801005
+      </div>
     </footer>
   );
 };
