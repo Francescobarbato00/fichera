@@ -24,7 +24,7 @@ const reviews = [
   {
     id: 5,
     name: "Valentina Visconti",
-    text: "Ottimo rapporto qualità prezzo. Daniele ed il suo staff sono bravissimi, cordiali e disponibili. Il locale è sempre pulito e ben frequentato. Mio figlio oramai adora Daniele e si fa tagliare i capelli solo da lui. Daniele lavora con il nonno, un bellissimo messaggio familiare.",
+    text: "Ottimo rapporto qualità prezzo. Daniele ed il suo staff sono bravissimi, cordiali e disponibili. Il locale è sempre pulito e ben frequentato. Mio figlio oramai adora Daniele e si fa tagliare i capelli solo da lui. Daniele lavora con il nonno, un bellissimo messaggio familiare!",
   },
   {
     id: 6,

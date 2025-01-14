@@ -23,7 +23,7 @@ const HowWeWorkSection = () => {
         <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-gray-300 max-w-xl mx-auto leading-relaxed">
           Offriamo un servizio professionale che combina tecnica e passione.
           Guarda il nostro team all’opera per comprendere l’attenzione al
-          dettaglio che ci distingue.
+          dettaglio che ci distingue!
         </p>
       </div>
 
