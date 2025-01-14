@@ -22,8 +22,7 @@ const ShippingPolicies = () => {
           <h2 className="text-2xl font-semibold mb-4">Costi di Spedizione</h2>
           <p>
             I costi di spedizione vengono calcolati in base al peso e alla
-            destinazione dell'ordine. Le tariffe verranno visualizzate durante
-            il processo di checkout.
+            destinazione dell'ordine.
           </p>
           <ul className="list-disc list-inside">
             <li>
@@ -82,7 +81,7 @@ const ShippingPolicies = () => {
           <h2 className="text-2xl font-semibold mb-4">Contattaci</h2>
           <p>
             Per qualsiasi domanda relativa alle spedizioni, puoi contattarci via
-            email all'indirizzo:{" "}
+            email all'indirizzo indicato in oggetto:{" "}
             <a
               href="mailto:df7barber@gmail.com"
               className="text-blue-500 underline"
