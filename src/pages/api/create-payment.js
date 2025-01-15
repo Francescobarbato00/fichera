@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         price_data: {
           currency: "eur",
           product_data: productData,
-          unit_amount: Math.round(item.price * 100), // Prezzo in centesimi
+          unit_amount: Math.round((item.price + 9) * 100), // Aggiunge 9€ all'importo
         },
         quantity: item.quantity,
       };

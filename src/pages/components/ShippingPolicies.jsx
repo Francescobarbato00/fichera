@@ -27,13 +27,10 @@ const ShippingPolicies = () => {
           <ul className="list-disc list-inside">
             <li>
               Spedizione standard:{" "}
-              <span className="text-yellow-500">€5,00</span> per ordini
-              inferiori a <span className="text-yellow-500">€50,00</span>.
+              <span className="text-yellow-500">€9,00</span> per tutti  gli ordini nazionali, con una tariffa fissa di Poste Italiane di
+               
             </li>
-            <li>
-              Spedizione gratuita per ordini superiori a{" "}
-              <span className="text-yellow-500">€50,00</span>.
-            </li>
+            
           </ul>
         </section>
 
@@ -43,8 +40,7 @@ const ShippingPolicies = () => {
           </h2>
           <p>
             Una volta che il tuo ordine è stato spedito, riceverai un'email di
-            conferma con il numero di tracciamento e un link per seguire lo
-            stato della consegna.
+            conferma.
           </p>
         </section>
 
