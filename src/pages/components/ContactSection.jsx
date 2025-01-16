@@ -44,21 +44,22 @@ const ContactSection = () => {
             sotto.
           </p>
           <form className="space-y-3">
-            <input
-              type="text"
-              placeholder="* Il tuo nome"
-              className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
-            <textarea
-              placeholder="Messaggio"
-              rows="4"
-              className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            ></textarea>
+          <input
+  type="text"
+  placeholder="* Il tuo nome"
+  className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black"
+/>
+<input
+  type="email"
+  placeholder="Email"
+  className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black"
+/>
+<textarea
+  placeholder="Messaggio"
+  rows="4"
+  className="w-full p-2 sm:p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-yellow-500 text-black"
+/>
+
             <button
               type="submit"
               className="w-full md:w-auto px-4 sm:px-6 py-2 sm:py-3 bg-yellow-500 text-white font-semibold rounded shadow hover:bg-yellow-600 transition duration-300"
