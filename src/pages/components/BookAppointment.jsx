@@ -46,9 +46,7 @@ const BookAppointment = () => {
         }`}
       >
         Siamo orgogliosi di offrire un servizio di alta qualità che inizia con
-        la prenotazione degli appuntamenti. Grazie al nostro Chatbot puoi
-        prenotare dove e quando vuoi, ti basterà consultare la pagina prenota
-        ora.
+        la prenotazione degli appuntamenti.
       </p>
       <div className={`px-4 ${isVisible ? "animate-fadeInUp" : ""}`}>
         <Link href="/Appointment" legacyBehavior>

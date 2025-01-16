@@ -48,8 +48,8 @@ const OtherBookingMethods = () => {
             <div className="flex flex-col sm:flex-row items-center sm:items-start sm:space-x-4 text-center sm:text-left">
               <FaWhatsapp className="text-yellow-500 text-2xl mb-2 sm:mb-0" />
               <div>
-                <h4 className="text-lg font-bold text-gray-800">WhatsApp</h4>
-                <p className="text-gray-600">+351 729 7915</p>
+                <h4 className="text-lg font-bold text-gray-800">Numero</h4>
+                <p className="text-gray-600"> 06 8398 6576</p>
               </div>
             </div>
 

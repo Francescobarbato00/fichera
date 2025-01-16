@@ -28,7 +28,6 @@ const HomeSection = () => {
         <p className="mt-4 text-sm sm:text-lg font-light leading-relaxed text-justify sm:text-left animate-fadeIn">
           La rivoluzione dello stile: precisione, cura dei dettagli e
           un'esperienza unica che unisce tradizione e modernità.
-          Ora disponibile il nostro Chatbot di intelligenza artificiale per prenotare dove e quando vuoi!
         </p>
         {/* Bottone con animazione */}
         <div className="mt-6 flex justify-start w-full">

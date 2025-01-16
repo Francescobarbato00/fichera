@@ -11,36 +11,34 @@ const HowToBookSection = () => {
       </div>
 
       {/* Testo Tutorial */}
-      <div className="max-w-xl sm:max-w-3xl mx-auto text-gray-600 text-sm sm:text-lg leading-relaxed px-4 sm:px-0">
-        <ol className="list-decimal list-inside space-y-4">
-          <li>
-            <span className="font-semibold">Clicca sull'icona di WhatsApp:</span> 
-            In basso a destra della pagina troverai l'icona verde di WhatsApp.
-            Cliccandoci sopra, accederai automaticamente alla nostra chat.
-          </li>
-          <li>
-            <span className="font-semibold">Inizia la conversazione:</span> 
-            Scrivi un messaggio per iniziare la chat con il nostro sistema.
-            Puoi anche utilizzare il messaggio precompilato che apparirà
-            automaticamente.
-          </li>
-          <li>
-            <span className="font-semibold">Indica il servizio desiderato:</span> 
-            Specifica il trattamento che vorresti prenotare, ad esempio: 
-            "Taglio Uomo" o "Barba".
-          </li>
-          <li>
-            <span className="font-semibold">Indica data e preferenze:</span> 
-            Comunica la giornata e l'orario preferito per il tuo appuntamento.
-            Puoi anche indicare il tuo barbiere di fiducia se ne hai uno.
-          </li>
-          <li>
-            <span className="font-semibold">Ricevi conferma:</span> 
-            Il nostro sistema ti risponderà indicando la disponibilità. Una
-            volta confermata, il tuo appuntamento sarà prenotato!
-          </li>
-        </ol>
-      </div>
+      {/* Testo Tutorial */}
+<div className="max-w-xl sm:max-w-3xl mx-auto text-gray-600 text-sm sm:text-lg leading-relaxed px-4 sm:px-0">
+  <ol className="list-decimal list-inside space-y-4">
+    <li>
+      <span className="font-semibold">Chiama per prenotare:</span> 
+      Per fissare un appuntamento, chiama il numero{" "}
+      <a href="tel:0683986576" className="text-blue-500 font-semibold">
+        06 8398 6576
+      </a>.
+    </li>
+    <li>
+      <span className="font-semibold">Indica il servizio desiderato:</span> 
+      Specifica il trattamento che vorresti prenotare, ad esempio: 
+      "Taglio Uomo" o "Barba".
+    </li>
+    <li>
+      <span className="font-semibold">Comunica data e orario preferiti:</span> 
+      Indica il giorno e l'orario in cui desideri fissare l'appuntamento.
+      Se hai un barbiere di fiducia, puoi richiederlo durante la chiamata.
+    </li>
+    <li>
+      <span className="font-semibold">Ricevi conferma:</span> 
+      Il nostro staff ti confermerà la disponibilità e il tuo appuntamento
+      sarà prenotato!
+    </li>
+  </ol>
+</div>
+
     </div>
   );
 };
