@@ -3,13 +3,19 @@ import { FaCommentDots } from "react-icons/fa";
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [chatMessages, setChatMessages] = useState([
-    { text: "Ciao! 👋 Come posso aiutarti oggi?", sender: "bot" },
-  ]);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [fadeIn, setFadeIn] = useState(false);
   const chatRef = useRef(null);
 
+  const welcomeMessage = { text: "Ciao! 👋 Come posso aiutarti oggi?", sender: "bot" };
+
+  // Mostra il messaggio iniziale quando il chatbot si apre
   const handleToggleChat = () => {
     setIsOpen(!isOpen);
+    if (!isOpen) {
+      setChatMessages([welcomeMessage]); // Imposta il messaggio iniziale solo la prima volta
+      setFadeIn(true);
+    }
   };
 
   const handleUserMessage = (question) => {
@@ -26,17 +32,21 @@ const ChatWidget = () => {
         break;
       case "Come prenotare?":
         answer =
-          "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576** . Ti aspettiamo! 🚀";
+          "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576** oppure scriverci a **df7barber@gmail.com**. Ti aspettiamo! 🚀";
         break;
       default:
         answer = "Mi dispiace, non ho capito la domanda. Prova a selezionare un'opzione!";
     }
 
-    setChatMessages((prev) => [
-      ...prev,
-      { text: question, sender: "user" },
-      { text: answer, sender: "bot" },
-    ]);
+    setFadeIn(false); // Reset animazione
+    setTimeout(() => {
+      setChatMessages((prev) => [
+        ...prev,
+        { text: question, sender: "user" },
+        { text: answer, sender: "bot" },
+      ]);
+      setFadeIn(true); // Attiva l'effetto dopo aver aggiornato i messaggi
+    }, 100);
   };
 
   // Auto-scroll alla fine della chat
@@ -59,17 +69,19 @@ const ChatWidget = () => {
 
       {/* Finestra della Chat */}
       {isOpen && (
-        <div className="bg-white w-80 rounded-lg shadow-lg fixed bottom-20 right-4 border border-gray-300">
+        <div className="bg-white w-80 max-w-full rounded-lg shadow-lg fixed bottom-20 right-4 border border-gray-300 md:w-96">
           <div className="bg-yellow-500 text-white p-3 font-bold text-center rounded-t-lg">
-            Df Barbershop ChatBot
+            ChatBot
           </div>
-          <div ref={chatRef} className="p-3 h-60 overflow-y-auto">
+          <div ref={chatRef} className="p-3 h-60 max-h-72 overflow-y-auto">
             {chatMessages.map((msg, index) => (
               <div
                 key={index}
-                className={`p-2 my-1 text-sm rounded-lg ${
+                className={`p-2 my-1 text-sm rounded-lg transition-opacity duration-500 ${
+                  fadeIn ? "opacity-100" : "opacity-0"
+                } ${
                   msg.sender === "bot"
-                    ? "bg-gray-200 text-left"
+                    ? "bg-gray-200 text-left text-black md:text-gray-800" // Testo nero su mobile, grigio su desktop
                     : "bg-yellow-500 text-white text-right"
                 }`}
               >
