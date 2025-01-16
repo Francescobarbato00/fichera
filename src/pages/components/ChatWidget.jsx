@@ -32,7 +32,7 @@ const ChatWidget = () => {
         break;
       case "Come prenotare?":
         answer =
-          "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576** oppure scriverci a **df7barber@gmail.com**. Ti aspettiamo! 🚀";
+          "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576**. Ti aspettiamo! 🚀";
         break;
       default:
         answer = "Mi dispiace, non ho capito la domanda. Prova a selezionare un'opzione!";
