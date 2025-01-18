@@ -30,11 +30,12 @@ const ChatWidget = () => {
         answer =
           "⏰ Siamo aperti **dal Martedì al Sabato, dalle 08:00 alle 20:00**. Vieni a trovarci per un'esperienza unica! ✂️";
         break;
-      case "Come prenotare?":
-        answer =
-          "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576**. Ti aspettiamo! 🚀";
-        break;
+        case "Come prenotare?":
+          answer =
+            "📅 Per prenotare un appuntamento, puoi **chiamarci al numero 06 8398 6576** oppure **prenotare online** scegliendo servizio, operatore, data e ora direttamente su Treatwell: https://widget.treatwell.it/salone/df-barbershop/. Ti aspettiamo! 🚀";
+          break;
       default:
+      
         answer = "Mi dispiace, non ho capito la domanda. Prova a selezionare un'opzione!";
     }
 
