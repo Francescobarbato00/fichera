@@ -1,9 +1,9 @@
-import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { useRouter } from "next/router";
 import { useCart } from "@/context/CartContext";
 import MainHeader from "../components/MainHeader";
-import { toast } from "sonner"; // Importa la libreria Sonner
+import { toast } from "sonner";
 
 const ProductDetails = ({ prodotto }) => {
   const router = useRouter();
@@ -22,47 +22,28 @@ const ProductDetails = ({ prodotto }) => {
     <div className="bg-white text-black min-h-screen">
       <MainHeader />
       <div className="container mx-auto p-4 md:p-6">
-        {/* Pulsanti di navigazione */}
         <div className="flex justify-between mb-6">
-          <button
-            onClick={() => router.back()}
-            className="text-gray-500 hover:underline"
-          >
+          <button onClick={() => router.back()} className="text-gray-500 hover:underline">
             ← Torna indietro
           </button>
-
-          <button
-            onClick={() => router.push("/shop")}
-            className="text-gray-500 hover:underline"
-          >
+          <button onClick={() => router.push("/shop")} className="text-gray-500 hover:underline">
             🛒 Torna allo Shop
           </button>
         </div>
 
-        {/* Griglia responsiva per immagine e dettagli */}
         <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
-          {/* Immagine del prodotto */}
-          <img
-            src={prodotto.image}
-            alt={prodotto.name}
-            className="w-full max-w-xs lg:max-w-md rounded-lg shadow-lg"
-          />
-
-          {/* Dettagli del prodotto */}
+          <img src={prodotto.image} alt={prodotto.name} className="w-full max-w-xs lg:max-w-md rounded-lg shadow-lg" />
           <div className="w-full text-center lg:text-left">
             <h1 className="text-2xl lg:text-4xl font-bold">{prodotto.name}</h1>
             <p className="text-yellow-500 text-xl mt-2">{prodotto.price}€</p>
             <p className="mt-4 text-base lg:text-lg">{prodotto.description}</p>
-
-            {/* Pulsante Aggiungi al Carrello */}
+            
             <button
               onClick={handleAddToCart}
               className="mt-6 w-full lg:w-auto bg-yellow-500 text-white py-2 px-4 rounded hover:bg-yellow-600 transition duration-200"
             >
               Aggiungi al Carrello
             </button>
-
-            {/* Pulsante Vai al Carrello */}
             <div className="mt-4">
               <button
                 onClick={() => router.push("/carrello")}
@@ -78,7 +59,18 @@ const ProductDetails = ({ prodotto }) => {
   );
 };
 
-export async function getServerSideProps({ params }) {
+// 🛠 Pre-genera tutte le pagine prodotto al momento della build
+export async function getStaticPaths() {
+  const snapshot = await getDocs(collection(db, "products"));
+  const paths = snapshot.docs.map((doc) => ({
+    params: { id: doc.id },
+  }));
+
+  return { paths, fallback: "blocking" };
+}
+
+// 🛠 Recupera i dati del prodotto in fase di build
+export async function getStaticProps({ params }) {
   const docRef = doc(db, "products", params.id);
   const docSnap = await getDoc(docRef);
 
@@ -86,7 +78,10 @@ export async function getServerSideProps({ params }) {
     return { notFound: true };
   }
 
-  return { props: { prodotto: { id: docSnap.id, ...docSnap.data() } } };
+  return {
+    props: { prodotto: { id: docSnap.id, ...docSnap.data() } },
+    revalidate: 60, // Aggiorna la cache ogni 60 secondi
+  };
 }
 
 export default ProductDetails;
