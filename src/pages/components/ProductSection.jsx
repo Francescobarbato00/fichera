@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { collection, getDocs } from "firebase/firestore";
@@ -8,6 +8,7 @@ const ProductSection = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 8; // Numero di prodotti per pagina
+  const sectionRef = useRef(null); // Riferimento alla sezione prodotti
 
   // Recupera i prodotti da Firebase Firestore
   useEffect(() => {
@@ -29,10 +30,16 @@ const ProductSection = () => {
   // Calcola il numero totale di pagine
   const totalPages = Math.ceil(products.length / itemsPerPage);
 
-  // Funzione per cambiare pagina
+  // Funzione per cambiare pagina con effetto scroll in alto
   const changePage = (newPage) => {
     if (newPage >= 0 && newPage < totalPages) {
       setCurrentPage(newPage);
+      
+      // Scorri alla sezione prodotti con animazione
+      if (sectionRef.current) {
+        const offsetTop = sectionRef.current.offsetTop;
+        window.scrollTo({ top: offsetTop, behavior: "smooth" });
+      }
     }
   };
 
@@ -51,18 +58,17 @@ const ProductSection = () => {
   );
 
   return (
-    <div id="product-section" className="py-12 bg-white">
-    {/* Titolo principale */}
-    <div className="text-center mb-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-        I nostri <span className="text-yellow-500">prodotti</span>
-      </h2>
-      <p className="mt-2 text-gray-600 text-sm">
-        Al momento del checkout verrà applicata una tariffa fissa di 9€ per la spedizione,  
-        in linea con le tariffe standard di Poste Italiane.
-      </p>
-    </div>
-  
+    <div id="product-section" ref={sectionRef} className="py-12 bg-white">
+      {/* Titolo principale */}
+      <div className="text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+          I nostri <span className="text-yellow-500">prodotti</span>
+        </h2>
+        <p className="mt-2 text-gray-600 text-sm">
+          Al momento del checkout verrà applicata una tariffa fissa di 9€ per la spedizione,  
+          in linea con le tariffe standard di Poste Italiane.
+        </p>
+      </div>
 
       {/* Griglia dei prodotti */}
       <div className="container mx-auto px-4">
@@ -125,7 +131,7 @@ const ProductSection = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentPage(index)}
+                onClick={() => changePage(index)}
                 className={`w-8 h-8 text-sm rounded-full font-semibold ${
                   currentPage === index ? "bg-yellow-500 text-white" : "bg-gray-300 text-gray-700 hover:bg-yellow-400"
                 } transition`}
