@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
         {/* Titolo */}
         <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-black">
-          DICO DI<span className="text-yellow-500"> NOI</span>
+          DICONO DI<span className="text-yellow-500"> NOI</span>
         </h2>
 
         {/* Contenuto delle recensioni */}
