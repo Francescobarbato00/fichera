@@ -36,32 +36,31 @@ export default async function handler(req, res) {
     // Calcola la quantità totale degli articoli nel carrello
     const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
 
-    // Aggiunge la riga per le spese di spedizione o spedizione gratuita in base alla quantità
+    // Determina il costo di spedizione in base alla quantità
+    let shippingCost = 0;
+    let shippingLabel = "";
     if (totalQuantity >= 5) {
-      // Ordine di 5 o più prodotti: spedizione gratuita
-      line_items.push({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: "Spedizione gratuita",
-          },
-          unit_amount: 0,
-        },
-        quantity: 1,
-      });
+      shippingCost = 0;
+      shippingLabel = "Spedizione gratuita";
+    } else if (totalQuantity === 3 || totalQuantity === 4) {
+      shippingCost = 4.5;
+      shippingLabel = "Spedizione (metà prezzo)";
     } else {
-      // Ordine inferiore a 5 prodotti: costo di spedizione di 9€
-      line_items.push({
-        price_data: {
-          currency: "eur",
-          product_data: {
-            name: "Spese di spedizione",
-          },
-          unit_amount: Math.round(9 * 100),
-        },
-        quantity: 1,
-      });
+      shippingCost = 9;
+      shippingLabel = "Spese di spedizione";
     }
+
+    // Aggiungi la riga per la spedizione
+    line_items.push({
+      price_data: {
+        currency: "eur",
+        product_data: {
+          name: shippingLabel,
+        },
+        unit_amount: Math.round(shippingCost * 100),
+      },
+      quantity: 1,
+    });
 
     console.log("Line Items preparati:", line_items);
 
@@ -88,8 +87,6 @@ export default async function handler(req, res) {
     return res.status(200).json({ url: session.url });
   } catch (error) {
     console.error("Errore Stripe:", error.message);
-    return res
-      .status(500)
-      .json({ message: "Errore durante la creazione della sessione di pagamento" });
+    return res.status(500).json({ message: "Errore durante la creazione della sessione di pagamento" });
   }
 }

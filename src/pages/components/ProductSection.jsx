@@ -61,14 +61,17 @@ const ProductSection = () => {
     <div id="product-section" ref={sectionRef} className="py-12 bg-white">
       {/* Titolo principale */}
       <div className="text-center mb-8">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
-          I nostri <span className="text-yellow-500">prodotti</span>
-        </h2>
-        <p className="mt-2 text-gray-600 text-sm">
-          Al momento del checkout verrà applicata una tariffa fissa di 9€ per la spedizione,  
-          in linea con le tariffe standard di Poste Italiane.
-        </p>
-      </div>
+  <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">
+    I nostri <span className="text-yellow-500">prodotti</span>
+  </h2>
+  <p className="mt-2 text-gray-600 text-sm">
+    Al momento del checkout verrà applicata una tariffa di spedizione in base al numero totale di prodotti acquistati: <br />
+    - Meno di 3 prodotti: <strong>9€</strong> <br />
+    - 3 o 4 prodotti: <strong>4,50€</strong> <br />
+    - 5 o più prodotti: <strong>spedizione gratuita</strong>
+  </p>
+</div>
+
 
       {/* Griglia dei prodotti */}
       <div className="container mx-auto px-4">
