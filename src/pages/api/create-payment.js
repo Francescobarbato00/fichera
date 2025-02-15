@@ -13,13 +13,12 @@ export default async function handler(req, res) {
     console.log("Ricevuto carrello:", cart);
     console.log("Ricevuto formData:", formData);
 
-    // Prepara i line items per Stripe Checkout
+    // Crea i line items per ogni prodotto (senza spese di spedizione aggiunte)
     const line_items = cart.map((item) => {
       const productData = {
-        name: item.name, // Nome prodotto
+        name: item.name,
       };
 
-      // Aggiunge l'immagine solo se non è vuota
       if (item.image && item.image.trim() !== "") {
         productData.images = [item.image];
       }
@@ -28,15 +27,27 @@ export default async function handler(req, res) {
         price_data: {
           currency: "eur",
           product_data: productData,
-          unit_amount: Math.round((item.price + 9) * 100), // Aggiunge 9€ all'importo
+          unit_amount: Math.round(item.price * 100),
         },
         quantity: item.quantity,
       };
     });
 
+    // Aggiungiamo sempre la riga extra per le spese di spedizione (9€ una tantum)
+    line_items.push({
+      price_data: {
+        currency: "eur",
+        product_data: {
+          name: "Spese di spedizione",
+        },
+        unit_amount: Math.round(9 * 100),
+      },
+      quantity: 1,
+    });
+
     console.log("Line Items preparati:", line_items);
 
-    // Crea la sessione di pagamento Stripe
+    // Creazione della sessione di pagamento su Stripe
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items,
@@ -56,10 +67,11 @@ export default async function handler(req, res) {
 
     console.log("Sessione Stripe creata:", session);
 
-    // Invia l'URL della sessione di checkout
     return res.status(200).json({ url: session.url });
   } catch (error) {
     console.error("Errore Stripe:", error.message);
-    return res.status(500).json({ message: "Errore durante la creazione della sessione di pagamento" });
+    return res
+      .status(500)
+      .json({ message: "Errore durante la creazione della sessione di pagamento" });
   }
 }
