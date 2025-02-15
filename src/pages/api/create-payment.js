@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     console.log("Ricevuto carrello:", cart);
     console.log("Ricevuto formData:", formData);
 
-    // Crea i line items per ogni prodotto (senza spese di spedizione aggiunte)
+    // Prepara i line items per i prodotti
     const line_items = cart.map((item) => {
       const productData = {
         name: item.name,
@@ -33,17 +33,35 @@ export default async function handler(req, res) {
       };
     });
 
-    // Aggiungiamo sempre la riga extra per le spese di spedizione (9€ una tantum)
-    line_items.push({
-      price_data: {
-        currency: "eur",
-        product_data: {
-          name: "Spese di spedizione",
+    // Calcola la quantità totale degli articoli nel carrello
+    const totalQuantity = cart.reduce((acc, item) => acc + item.quantity, 0);
+
+    // Aggiunge la riga per le spese di spedizione o spedizione gratuita in base alla quantità
+    if (totalQuantity >= 5) {
+      // Ordine di 5 o più prodotti: spedizione gratuita
+      line_items.push({
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "Spedizione gratuita",
+          },
+          unit_amount: 0,
         },
-        unit_amount: Math.round(9 * 100),
-      },
-      quantity: 1,
-    });
+        quantity: 1,
+      });
+    } else {
+      // Ordine inferiore a 5 prodotti: costo di spedizione di 9€
+      line_items.push({
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "Spese di spedizione",
+          },
+          unit_amount: Math.round(9 * 100),
+        },
+        quantity: 1,
+      });
+    }
 
     console.log("Line Items preparati:", line_items);
 
